@@ -33,6 +33,8 @@ public class MOBClient implements LoggingCallback {
      * Start the socket to the server.
      */
     public void start(String host, int port) {
+        SocketClient.addLoggingCallback(this);
+
         if (isRunning()) {
             return;
         }
@@ -61,7 +63,11 @@ public class MOBClient implements LoggingCallback {
 
                     connecting.set(false);
                 } catch (IOException exception) {
-                    Log.d(getClass().getSimpleName(), "Failed to connect to server.");
+                    Log.d(getClass().getSimpleName(), "Failed to connect to server. Will try again in 1 second.");
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) { }
                 }
             }
         }).start();
@@ -81,10 +87,12 @@ public class MOBClient implements LoggingCallback {
             client.stop();
         }
 
-        try {
-            socket.close();
-        } catch (IOException exception) {
-            Log.d(getClass().getSimpleName(), "Failed to close socket.");
+        if (socket != null) {
+            try {
+                socket.close();
+            } catch (IOException exception) {
+                Log.d(getClass().getSimpleName(), "Failed to close socket.");
+            }
         }
     }
 
