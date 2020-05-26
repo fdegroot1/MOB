@@ -5,4 +5,5 @@
     <string name="catalogus_button">Catalogus</string>
     <string name="kaartvinder_button">Kaartvinder</string>
     <string name="battle_button">Battle</string>
+    <string name="ontvang_kaart">Ontvang kaart!</string>
 </resources>
