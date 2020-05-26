@@ -6,23 +6,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RadioButton
-        android:id="@+id/radioButton8"
+        android:id="@+id/OptionButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RadioButton"
-        app:layout_constraintBottom_toTopOf="@+id/radioButton9"
+        app:layout_constraintBottom_toTopOf="@+id/OptionButton4"
         app:layout_constraintStart_toStartOf="parent" />
 
     <RadioButton
-        android:id="@+id/radioButton10"
+        android:id="@+id/OptionButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RadioButton"
-        app:layout_constraintBottom_toTopOf="@+id/radioButton11"
+        app:layout_constraintBottom_toTopOf="@+id/OptionButton3"
         app:layout_constraintStart_toStartOf="parent" />
 
     <RadioButton
-        android:id="@+id/radioButton11"
+        android:id="@+id/OptionButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="504dp"
@@ -31,18 +31,18 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <RadioButton
-        android:id="@+id/radioButton9"
+        android:id="@+id/OptionButton4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RadioButton"
-        app:layout_constraintBottom_toTopOf="@+id/radioButton10"
+        app:layout_constraintBottom_toTopOf="@+id/OptionButton2"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Instellingen"
+        android:text="Options"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

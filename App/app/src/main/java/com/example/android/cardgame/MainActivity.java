@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.navigation_catalogus:
                             openFragment(CatalogusFragment.newInstance("", ""));
                             return true;
-                        case R.id.navigation_kaartvinder:
+                        case R.id.navigation_cardFinder:
                             openFragment(CardFinderFragment.newInstance("", ""));
                             return true;
                         case R.id.navigation_battle:
@@ -57,11 +57,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.spelregels_item:
+            case R.id.gamerules_item:
                setContentView(R.layout.activity_gamerules);
                 return true;
-            case R.id.instellingen_item:
-//                setContentView(R.layout.activity_instellingen);
+            case R.id.options_item:
+                setContentView(R.layout.activity_options);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

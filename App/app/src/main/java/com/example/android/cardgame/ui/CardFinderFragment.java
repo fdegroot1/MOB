@@ -11,14 +11,14 @@ import com.example.android.cardgame.R;
 
 public class CardFinderFragment extends Fragment {
 
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     private String mParam1;
     private String mParam2;
     public CardFinderFragment() {
-        // Required empty public constructor
+
     }
 
 
