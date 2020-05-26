@@ -9,6 +9,6 @@ public class kaartvinder extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kaartvinder);
+        setContentView(R.layout.activity_cardfinder);
     }
 }

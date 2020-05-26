@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".kaartvinder"
-    android:orientation="vertical">
+    tools:context=".kaartvinder">
 
         <TextView
-            android:id="@+id/kaartvinder_text"
+            android:id="@+id/cardfinder_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -22,7 +21,7 @@
             app:layout_constraintLeft_toLeftOf="parent"/>
 
         <EditText
-            android:id="@+id/kaartcode_input"
+            android:id="@+id/cardcode_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -33,12 +32,12 @@
             android:textSize="20dp"
             android:paddingLeft="80dp"
             android:paddingRight="80dp"
-            app:layout_constraintTop_toBottomOf="@id/kaartvinder_text"
+            app:layout_constraintTop_toBottomOf="@id/cardfinder_text"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"/>
 
         <Button
-            android:id="@+id/ontvang_kaart"
+            android:id="@+id/receive_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -47,10 +46,11 @@
             android:paddingBottom="32dp"
             android:paddingTop="32dp"
             android:textSize="25dp"
+            android:fontFamily="@font/proxima_nova_bold"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
-            android:text="@string/ontvang_kaart"
-            app:layout_constraintTop_toBottomOf="@id/kaartcode_input"
+            android:text="@string/receive_kaart"
+            app:layout_constraintTop_toBottomOf="@id/cardcode_input"
             app:layout_constraintBottom_toTopOf="@id/menu_buttons"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"/>
@@ -63,26 +63,28 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <Button
-            android:id="@+id/catalogus_button"
+            android:id="@+id/catalogue_button"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/catalogus_button"/>
+            android:fontFamily="@font/proxima_nova_bold"
+            android:text="@string/catalogue_button"/>
 
         <Button
             android:id="@+id/kaartvinder_button"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/kaartvinder_button"/>
+            android:fontFamily="@font/proxima_nova_bold"
+            android:text="@string/cardfinder_button"/>
 
         <Button
             android:id="@+id/battle_button"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/proxima_nova_bold"
             android:text="@string/battle_button"/>
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
