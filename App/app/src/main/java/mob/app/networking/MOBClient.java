@@ -6,11 +6,12 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import mob.sdk.networking.LoggingCallback;
 import mob.sdk.networking.SocketClient;
 import mob.sdk.networking.listeners.ConnectionListener;
 import mob.sdk.networking.listeners.DisconnectionListener;
 
-public class MOBClient {
+public class MOBClient implements LoggingCallback {
     private static MOBClient instance;
 
     private final AtomicBoolean connecting = new AtomicBoolean(false);
@@ -112,5 +113,15 @@ public class MOBClient {
 
     private boolean canSendTransaction() {
         return isRunning() && client != null;
+    }
+
+    @Override
+    public void print(String s) {
+        Log.d(getClass().getSimpleName(), s);
+    }
+
+    @Override
+    public void printf(String s, Object... objects) {
+        Log.d(getClass().getSimpleName(), String.format(s, objects));
     }
 }
