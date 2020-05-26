@@ -8,11 +8,10 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.android.cardgame.ui.BattleFragment;
+import com.example.android.cardgame.ui.CardFinderFragment;
 import com.example.android.cardgame.ui.CatalogusFragment;
-import com.example.android.cardgame.ui.KaartVinderFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                             openFragment(CatalogusFragment.newInstance("", ""));
                             return true;
                         case R.id.navigation_kaartvinder:
-                            openFragment(KaartVinderFragment.newInstance("", ""));
+                            openFragment(CardFinderFragment.newInstance("", ""));
                             return true;
                         case R.id.navigation_battle:
                             openFragment(BattleFragment.newInstance("", ""));
@@ -57,13 +56,12 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Toast.makeText(this, "Selected Item: " +item.getTitle(), Toast.LENGTH_SHORT).show();
         switch (item.getItemId()) {
             case R.id.spelregels_item:
-                // do your code
+               setContentView(R.layout.activity_gamerules);
                 return true;
             case R.id.instellingen_item:
-                // do your code
+//                setContentView(R.layout.activity_instellingen);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
