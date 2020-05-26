@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class kaartvinder extends AppCompatActivity {
+public class cardfinder extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

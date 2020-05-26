@@ -6,4 +6,9 @@
     <string name="cardfinder_button">Kaartvinder</string>
     <string name="battle_button">Battle</string>
     <string name="receive_kaart">Ontvang kaart!</string>
+    <string name="table_input">Voer tafelnummer in</string>
+    <string name="connect">Verbind</string>
+    <string name="team_select">Ben je team rood of team blauw?</string>
+    <string name="opponent_ready">Jouw tegenstander is er klaar voor!</string>
+    <string name="begin">Begin!</string>
 </resources>

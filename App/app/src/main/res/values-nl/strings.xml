@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">Kaart spel</string>
-    <string name="card_finder_text">Door het gehele park zijn kaarten verstopt in stations. Vind deze door goed te letten op geluiden en lichtjes. Wanneer je een kaartstation hebt gevonden is te zien hoeveel kaarten er nog zijn. Als er nog kaarten over zijn vul je de code die weergegeven is hieronder in om een kaart te ontvangen!</string>
-    <string name="card_number_text">Voer kaartcode in!</string>
-    <string name="catalogue_button">Catalogus</string>
-    <string name="cardfinder_button">Kaartvinder</string>
-    <string name="battle_button">Battle</string>
-    <string name="receive_kaart">Ontvang kaart!</string>
-</resources>
