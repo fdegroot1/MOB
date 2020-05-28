@@ -22,6 +22,7 @@ public enum MOBClient implements LoggingCallback {
     private SocketClient client;
     private ConnectionListener connectionListener;
     private DisconnectionListener disconnectionListener;
+    private CardRequestListener cardRequestListener;
 
     /**
      * Start the socket to the server.
@@ -47,7 +48,7 @@ public enum MOBClient implements LoggingCallback {
                         connectionListener.onConnection();
 
                     this.client.addTransactionListener((transaction -> {
-
+                        //TODO if transaction type is of requesting a card, then call the card finder callback
                     }));
 
                     this.client.addDisconnectionListener(() -> {
@@ -113,8 +114,17 @@ public enum MOBClient implements LoggingCallback {
         this.disconnectionListener = listener;
     }
 
+    public void setCardRequestListener(CardRequestListener listener) {
+        this.cardRequestListener = listener;
+    }
+
     private boolean canSendTransaction() {
         return isRunning() && client != null;
+    }
+
+    @FunctionalInterface
+    public interface CardRequestListener {
+        void onCardRequested();
     }
 
     @Override
