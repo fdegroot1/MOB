@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import com.example.android.cardgame.R;
 
 import mob.app.networking.MOBClient;
+import mob.sdk.cards.Card;
 import mob.sdk.networking.payloads.BattleRequest;
 import mob.sdk.networking.payloads.BattleRequestInvalid;
 import mob.sdk.networking.payloads.BattleResult;
@@ -18,6 +19,7 @@ import mob.sdk.networking.payloads.BattleResult;
 public class BattleFragment extends Fragment implements MOBClient.BattleRequestInvalidListener, MOBClient.BattleResultListener {
     private EditText mTableIdEditText;
     private BattleRequest.Color mTeamColor;
+    private Card cardWon;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,16 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
         });
     }
 
+    /**
+     * Claim a card that is won
+     */
+    public void claimCard() {
+        if (cardWon == null)
+            return;
+
+        // @todo start card claimed activity
+    }
+
     @Override
     public void onBattleRequestInvalid(BattleRequestInvalid battleRequestInvalid) {
         switch (battleRequestInvalid.getField()) {
@@ -93,5 +105,7 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
         } else {
             // @todo update UI
         }
+
+        this.cardWon = battleResult.getCardWon();
     }
 }
