@@ -12,41 +12,18 @@ import com.example.android.cardgame.R;
 
 import mob.app.networking.MOBClient;
 import mob.sdk.networking.payloads.BattleRequest;
+import mob.sdk.networking.payloads.BattleRequestInvalid;
+import mob.sdk.networking.payloads.BattleResult;
 
-public class BattleFragment extends Fragment {
+public class BattleFragment extends Fragment implements MOBClient.BattleRequestInvalidListener, MOBClient.BattleResultListener {
     private EditText mTableIdEditText;
     private BattleRequest.Color mTeamColor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        MOBClient.INSTANCE.setOnBattleRequestInvalid(battleRequestInvalid -> {
-            switch (battleRequestInvalid.getField()) {
-                case TABLE_ID:
-                    // table id is wrong
-                    // @todo update UI
-                    break;
-                case TABLE_COLOR:
-                    // team color is already taken
-                    // @todo update UI
-                    break;
-            }
-        });
-
-        MOBClient.INSTANCE.setOnBattleResult(battleResult -> {
-            // battle has finished
-
-            // @todo update UI
-
-            if (battleResult.hasWon()) {
-                // @todo update UI
-            } else if (battleResult.hasLost()) {
-                // @todo update UI
-            } else {
-                // @todo update UI
-            }
-        });
+        MOBClient.INSTANCE.setOnBattleRequestInvalid(this);
+        MOBClient.INSTANCE.setOnBattleResult(this);
     }
 
     @Override
@@ -87,5 +64,34 @@ public class BattleFragment extends Fragment {
             // battle request send!
             // @todo update UI
         });
+    }
+
+    @Override
+    public void onBattleRequestInvalid(BattleRequestInvalid battleRequestInvalid) {
+        switch (battleRequestInvalid.getField()) {
+            case TABLE_ID:
+                // table id is wrong
+                // @todo update UI
+                break;
+            case TABLE_COLOR:
+                // team color is already taken
+                // @todo update UI
+                break;
+        }
+    }
+
+    @Override
+    public void onBattleResult(BattleResult battleResult) {
+        // battle has finished
+
+        // @todo update UI
+
+        if (battleResult.hasWon()) {
+            // @todo update UI
+        } else if (battleResult.hasLost()) {
+            // @todo update UI
+        } else {
+            // @todo update UI
+        }
     }
 }
