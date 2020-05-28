@@ -13,4 +13,6 @@
     <string name="begin">Begin!</string>
     <string name="card_front">Voorkant</string>
     <string name="card_back">Achterkant</string>
+    <string name="card_name">Parfoes de Tovernar</string>
+    <string name="card_class">Schildkaart</string>
 </resources>
