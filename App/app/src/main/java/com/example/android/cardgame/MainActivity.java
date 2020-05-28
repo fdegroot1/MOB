@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         NavController NavController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(bottomNavigationView, NavController);
+        SavedCardSettings savedCardSettings = SavedCardSettings.INSTANCE;
     }
 
     @Override

@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import com.example.android.cardgame.R;
+import com.example.android.cardgame.SavedCardSettings;
+
+import java.util.Objects;
 
 import mob.app.networking.MOBClient;
 import mob.sdk.networking.payloads.CardRequest;
@@ -51,6 +54,7 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
     public void onCardResult(CardResult cardResult) {
         // a card was returned from the server
         String cardId = cardResult.getCardId();
+        SavedCardSettings.INSTANCE.saveCard(Objects.requireNonNull(this.getContext()),cardId);
         //TODO update ui
 
 
