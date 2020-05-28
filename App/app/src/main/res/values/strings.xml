@@ -11,4 +11,6 @@
     <string name="team_select">Ben je team rood of team blauw?</string>
     <string name="opponent_ready">Jouw tegenstander is er klaar voor!</string>
     <string name="begin">Begin!</string>
+    <string name="card_front">Voorkant</string>
+    <string name="card_back">Achterkant</string>
 </resources>
