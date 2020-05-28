@@ -1,6 +1,7 @@
 package com.example.android.cardgame.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import mob.sdk.cards.Card;
 import mob.sdk.cards.CardRepository;
 
 public class CatalogueFragment extends Fragment {
+    private static final String TAG = "CatalogueFragment";
+
     private Set<String> cardCodes;
     private ArrayList<Card> cards;
     @Override
@@ -30,6 +33,8 @@ public class CatalogueFragment extends Fragment {
             Card card = CardRepository.INSTANCE.getCard(code);
             this.cards.add(card);
         }
+
+        Log.d(TAG, "onCreate: " + cards);
     }
 
     @Override
