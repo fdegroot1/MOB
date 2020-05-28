@@ -3,8 +3,8 @@
 #include <LiquidCrystal_I2C.h>
 
 // Zelf instellen voor je eigen WLAN
-const char* WLAN_SSID = "Ziggo7FA2E2F";
-const char* WLAN_ACCESS_KEY = "Zfxe2zdmyypc";
+const char* WLAN_SSID = "";
+const char* WLAN_ACCESS_KEY = "";
 
 // CLIENT_ID moet uniek zijn, dus zelf aanpassen (willekeurige letters en cijfers)
 const char* MQTT_CLIENT_ID = "MQTTExampleTryout_dsjhaajksdhfjkhg";
