@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.android.cardgame.R;
 
-public class CardFinderFragment extends Fragment {
+public class CatalogueFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,6 +17,6 @@ public class CardFinderFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_cardfinder, container, false);
+        return inflater.inflate(R.layout.fragment_catalogus, container, false);
     }
 }
