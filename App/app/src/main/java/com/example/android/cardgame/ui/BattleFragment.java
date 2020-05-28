@@ -85,7 +85,7 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
                 // table id is wrong
                 // @todo update UI
                 break;
-            case TABLE_COLOR:
+            case TEAM_COLOR:
                 // team color is already taken
                 // @todo update UI
                 break;
