@@ -27,6 +27,7 @@ public enum MOBClient implements LoggingCallback {
     private SocketClient client;
     private ConnectionListener connectionListener;
     private DisconnectionListener disconnectionListener;
+    private CardRequestListener cardRequestListener;
     private BattleRequestInvalidListener battleRequestInvalidListener;
     private BattleResultListener battleResultListener;
 
@@ -148,6 +149,10 @@ public enum MOBClient implements LoggingCallback {
         this.battleResultListener = listener;
     }
 
+    public void setCardRequestListener(CardRequestListener listener) {
+        this.cardRequestListener = listener;
+    }
+
     private boolean canSendTransaction() {
         return isRunning() && client != null;
     }
@@ -160,6 +165,11 @@ public enum MOBClient implements LoggingCallback {
     @Override
     public void printf(String s, Object... objects) {
         Log.d(getClass().getSimpleName(), String.format(s, objects));
+    }
+
+    @FunctionalInterface
+    public interface CardRequestListener {
+        void onCardRequested();
     }
 
     @FunctionalInterface
