@@ -56,7 +56,16 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
     }
 
     public void sendCardRequest() {
-        //TODO connect ui elements to this
-        MOBClient.INSTANCE.sendCardRequest(new CardRequest("test"));
+        // TODO connect ui elements to this
+        // TODO get card code from ui and replace "test" with
+        MOBClient.INSTANCE.sendCardRequest(new CardRequest("test"),
+                () -> {
+                    // Card request sent successfully!
+                    //TODO update ui
+                },
+                () -> {
+                    // Card request failed!
+                    //TODO update ui
+                });
     }
 }

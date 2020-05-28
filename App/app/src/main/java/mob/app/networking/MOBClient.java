@@ -148,11 +148,11 @@ public enum MOBClient implements LoggingCallback {
      * Send a card request.
      * @param cardRequest the request to send
      */
-    public void sendCardRequest(CardRequest cardRequest) {
+    public void sendCardRequest(CardRequest cardRequest, SocketClient.SuccessListener successListener, SocketClient.FailureListener failureListener) {
         if (!canSendTransaction())
             return;
 
-        client.send(new Transaction(TransactionType.CARD_REQUEST,cardRequest));
+        client.send(new Transaction(TransactionType.CARD_REQUEST,cardRequest),successListener,failureListener);
     }
 
     /**
