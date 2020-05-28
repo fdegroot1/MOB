@@ -3,8 +3,8 @@
 #include <LiquidCrystal_I2C.h>
 
 // Zelf instellen voor je eigen WLAN
-const char* WLAN_SSID = "Eigen WIFI";
-const char* WLAN_ACCESS_KEY = "Eigen WIFI";
+const char* WLAN_SSID = "";
+const char* WLAN_ACCESS_KEY = "";
 
 // CLIENT_ID moet uniek zijn, dus zelf aanpassen (willekeurige letters en cijfers)
 const char* MQTT_CLIENT_ID = "MQTTExampleTryout_dsjhaajksdhfjkhg";
@@ -22,6 +22,8 @@ const char* MQTT_TOPIC_BUTTON2 = "Demo/Hans/Btn2";
 const int   MQTT_QOS = 0;
 const int LINE_LENGTH = 16;
 
+int BUZZER = 5;
+
 WiFiClient wifiClient;
 PubSubClient mqttClient(wifiClient);
 LiquidCrystal_I2C lcd(0x27,20 ,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display
@@ -32,7 +34,6 @@ void mqttCallback(char* topic, byte* payload, unsigned int length) {
   Serial.println(topic);
   Serial.print("Payload length ");
   Serial.println(length);
-  // Genereer een korte piep
   // Kijk welk topic is ontvangen en handel daarnaar
   if (strcmp(topic, MQTT_TOPIC_LCD) == 0) {
     // De payload is een tekst voor op het LCD
@@ -47,6 +48,9 @@ void mqttCallback(char* topic, byte* payload, unsigned int length) {
     lcd.setCursor(0,0);
     lcd.print(txt);
   }
+  digitalWrite(BUZZER, HIGH);
+  delay(50);
+  digitalWrite(BUZZER, LOW);
 
 }
 void setup() {
@@ -93,6 +97,8 @@ void setup() {
   
   lcd.init();                      // initialize the lcd 
   lcd.backlight();
+
+  pinMode(BUZZER, OUTPUT);
 }
 
 void loop() {
