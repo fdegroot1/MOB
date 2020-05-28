@@ -1,13 +1,13 @@
 // 7 segment pins
-int a = 1;
+int a = 1; //0
 int b = 2;
-int c = 3;
+int c = 3; //32
 int d = 4;
 int e = 5;
-int f = 21;
+int f = 21; //25
 int g = 17;
 int c1 = 23;
-int c2 = 22;
+int c2 = 22;//26
 int c3 = 19;
 int c4 = 18;
 

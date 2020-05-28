@@ -104,6 +104,6 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
    mqttClient.loop();
-   mqttClient.publish(MQTT_TOPIC_LCD, "hoi");
+   //mqttClient.publish(MQTT_TOPIC_LCD, "hoi");
    delay(100);
 }
