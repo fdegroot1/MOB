@@ -47,7 +47,7 @@ public enum MOBClient implements LoggingCallback {
                         connectionListener.onConnection();
 
                     this.client.addTransactionListener((transaction -> {
-
+                        //TODO if transaction type is of requesting a card, then call the card finder callback
                     }));
 
                     this.client.addDisconnectionListener(() -> {
