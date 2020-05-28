@@ -4,4 +4,13 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_won_activity">You Won!</string>
+    <string name="textview_won_activity">You have won 5 rounds more than your opponent. As a reward you can receive a card!</string>
+    <string name="buttontext_won_activity">Receive card</string>
+    <string name="gamerules">The gamerules</string>
+    <string name="options">Options</string>
+    <string name="options1">Option 1</string>
+    <string name="options2">Option 2</string>
+    <string name="options3">Option 3</string>
+    <string name="options4">Option 4</string>
 </resources>
