@@ -22,8 +22,6 @@ import mob.sdk.networking.payloads.CardResult;
 public enum MOBClient implements LoggingCallback {
     INSTANCE;
 
-    private static MOBClient instance;
-
     private final AtomicBoolean connecting = new AtomicBoolean(false);
 
     private Socket socket;
