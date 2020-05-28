@@ -19,7 +19,7 @@ import mob.sdk.networking.payloads.BattleResult;
 public class BattleFragment extends Fragment implements MOBClient.BattleRequestInvalidListener, MOBClient.BattleResultListener {
     private EditText mTableIdEditText;
     private BattleRequest.Color mTeamColor;
-    private Card cardWon;
+    private Card mCardWon;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,7 +72,7 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
      * Claim a card that is won
      */
     public void claimCard() {
-        if (cardWon == null)
+        if (mCardWon == null)
             return;
 
         // @todo start card claimed activity
@@ -106,6 +106,6 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
             // @todo update UI
         }
 
-        this.cardWon = battleResult.getCardWon();
+        this.mCardWon = battleResult.getCardWon();
     }
 }
