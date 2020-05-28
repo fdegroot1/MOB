@@ -23,7 +23,7 @@ public class CatalogueFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.cards = new ArrayList<>();
+        this.cards = new ArrayList<>(CardRepository.INSTANCE.getSize());
         this.cardCodes = SavedCardSettings.INSTANCE.loadCards(Objects.requireNonNull(this.getContext()));
 
         for (String code : this.cardCodes) {

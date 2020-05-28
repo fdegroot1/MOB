@@ -2,6 +2,7 @@ package com.example.android.cardgame;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,6 +29,7 @@ public enum SavedCardSettings {
         this.cardCodes = sharedPreferences.getStringSet(CARD_CODES,cardCodes);
         if (this.cardCodes == null || this.cardCodes.isEmpty()) {
             // there are no cards yet
+            Toast.makeText(context,"You have no cards yet",Toast.LENGTH_SHORT);
         }
         return this.cardCodes;
     }
