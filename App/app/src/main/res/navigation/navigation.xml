@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/catalogus"
-        android:name="com.example.android.cardgame.ui.CatalogusFragment"
+        android:name="com.example.android.cardgame.ui.CatalogueFragment"
         android:label="fragment_catalogus"
         tools:layout="@layout/fragment_catalogus" />
     <fragment
