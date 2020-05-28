@@ -11,7 +11,9 @@ import mob.sdk.networking.SocketClient;
 import mob.sdk.networking.listeners.ConnectionListener;
 import mob.sdk.networking.listeners.DisconnectionListener;
 
-public class MOBClient implements LoggingCallback {
+public enum MOBClient implements LoggingCallback {
+    INSTANCE;
+
     private static MOBClient instance;
 
     private final AtomicBoolean connecting = new AtomicBoolean(false);
@@ -20,14 +22,6 @@ public class MOBClient implements LoggingCallback {
     private SocketClient client;
     private ConnectionListener connectionListener;
     private DisconnectionListener disconnectionListener;
-
-    public static MOBClient getInstance() {
-        if (instance == null) {
-            instance = new MOBClient();
-        }
-
-        return instance;
-    }
 
     /**
      * Start the socket to the server.
