@@ -137,11 +137,11 @@ public enum MOBClient implements LoggingCallback {
      * Send a battle request.
      * @param battleRequest request
      */
-    public void sendBattleRequest(BattleRequest battleRequest) {
+    public void sendBattleRequest(BattleRequest battleRequest, SocketClient.SuccessListener listener) {
         if (!canSendTransaction())
             return;
 
-        client.send(new Transaction(TransactionType.BATTLE_REQUEST, battleRequest));
+        client.send(new Transaction(TransactionType.BATTLE_REQUEST, battleRequest), listener, null);
     }
 
     /**
