@@ -160,22 +160,42 @@ public enum MOBClient implements LoggingCallback {
         this.disconnectionListener = listener;
     }
 
+    /**
+     * On battle request invalid callback.
+     * @param listener callback
+     */
     public void setOnBattleRequestInvalid(BattleRequestInvalidListener listener) {
         this.battleRequestInvalidListener = listener;
     }
 
+    /**
+     * On battle result callback.
+     * @param listener callback
+     */
     public void setOnBattleResult(BattleResultListener listener) {
         this.battleResultListener = listener;
     }
 
+    /**
+     * On card request callback.
+     * @param listener callback
+     */
     public void setOnCardRequest(CardRequestListener listener) {
         this.cardRequestListener = listener;
     }
 
+    /**
+     * On card request invalid callback.
+     * @param listener callback
+     */
     public void setOnCardRequestInvalid(CardRequestInvalidListener listener) {
         this.cardRequestInvalidListener = listener;
     }
 
+    /**
+     * On card result callback.
+     * @param listener callback
+     */
     public void setOnCardResult(CardResultListener listener) {
         this.cardResultListener = listener;
     }
