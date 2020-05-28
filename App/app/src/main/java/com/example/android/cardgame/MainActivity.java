@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void launchOptions() {
 //        Intent intent = new Intent(getApplicationContext(), OptionsActivity.class);
-        Intent intent = new Intent(getApplicationContext(),TestActivity.class);
+        Intent intent = new Intent(getApplicationContext(), OptionsActivity.class);
         startActivity(intent);
     }
 
