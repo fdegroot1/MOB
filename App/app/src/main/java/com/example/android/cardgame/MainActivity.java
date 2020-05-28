@@ -8,6 +8,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,17 +35,29 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.options_menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.gamerules_item:
-               setContentView(R.layout.activity_gamerules);
+                launchGameRules();
                 return true;
             case R.id.options_item:
-                setContentView(R.layout.activity_options);
+                launchOptions();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void launchOptions() {
+        Intent intent = new Intent(getApplicationContext(), OptionsActivity.class);
+        startActivity(intent);
+    }
+
+    private void launchGameRules() {
+        Intent intent = new Intent(getApplicationContext(), GamerulesActivity.class);
+        startActivity(intent);
+
     }
 }
