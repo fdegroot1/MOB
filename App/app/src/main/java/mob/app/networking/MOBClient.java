@@ -118,7 +118,7 @@ public enum MOBClient implements LoggingCallback {
     }
 
     @FunctionalInterface
-    public interface onCardRequested {
+    public interface CardRequestListener {
         void onCardRequested();
     }
 
