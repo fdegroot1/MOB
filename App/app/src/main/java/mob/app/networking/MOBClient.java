@@ -15,6 +15,9 @@ import mob.sdk.networking.listeners.DisconnectionListener;
 import mob.sdk.networking.payloads.BattleRequest;
 import mob.sdk.networking.payloads.BattleRequestInvalid;
 import mob.sdk.networking.payloads.BattleResult;
+import mob.sdk.networking.payloads.CardRequest;
+import mob.sdk.networking.payloads.CardRequestInvalid;
+import mob.sdk.networking.payloads.CardResult;
 
 public enum MOBClient implements LoggingCallback {
     INSTANCE;
@@ -28,6 +31,8 @@ public enum MOBClient implements LoggingCallback {
     private ConnectionListener connectionListener;
     private DisconnectionListener disconnectionListener;
     private CardRequestListener cardRequestListener;
+    private CardRequestInvalidListener cardRequestInvalidListener;
+    private CardResultListener cardResultListener;
     private BattleRequestInvalidListener battleRequestInvalidListener;
     private BattleResultListener battleResultListener;
 
@@ -63,6 +68,20 @@ public enum MOBClient implements LoggingCallback {
                             case BATTLE_RESULT:
                                 if (battleResultListener != null)
                                     battleResultListener.onBattleResult((BattleResult) transaction.getPayload());
+                                break;
+                            case CARD_REQUEST:
+                                if (cardRequestListener != null)
+                                    cardRequestListener.onCardRequested((CardRequest) transaction.getPayload());
+                                break;
+                            case CARD_REQUEST_INVALID:
+                                if (cardRequestInvalidListener != null) {
+                                    cardRequestInvalidListener.onCardRequestInvalid((CardRequestInvalid) transaction.getPayload());
+                                }
+                                break;
+                            case CARD_RESULT:
+                                if (cardResultListener != null) {
+                                    cardResultListener.onCardResult((CardResult) transaction.getPayload());
+                                }
                                 break;
                         }
                     }));
@@ -149,8 +168,16 @@ public enum MOBClient implements LoggingCallback {
         this.battleResultListener = listener;
     }
 
-    public void setCardRequestListener(CardRequestListener listener) {
+    public void setOnCardRequestListener(CardRequestListener listener) {
         this.cardRequestListener = listener;
+    }
+
+    public void setOnCardRequestInvalid(CardRequestInvalidListener listener) {
+        this.cardRequestInvalidListener = listener;
+    }
+
+    public void setOnCardResult(CardResultListener listener) {
+        this.cardResultListener = listener;
     }
 
     private boolean canSendTransaction() {
@@ -169,7 +196,17 @@ public enum MOBClient implements LoggingCallback {
 
     @FunctionalInterface
     public interface CardRequestListener {
-        void onCardRequested();
+        void onCardRequested(CardRequest cardRequest);
+    }
+
+    @FunctionalInterface
+    public interface CardRequestInvalidListener {
+        void onCardRequestInvalid(CardRequestInvalid cardRequestInvalid);
+    }
+
+    @FunctionalInterface
+    public interface CardResultListener {
+        void onCardResult(CardResult cardResult);
     }
 
     @FunctionalInterface

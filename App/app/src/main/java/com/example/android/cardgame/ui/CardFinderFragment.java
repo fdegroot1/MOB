@@ -10,12 +10,13 @@ import androidx.fragment.app.Fragment;
 import com.example.android.cardgame.R;
 
 import mob.app.networking.MOBClient;
+import mob.sdk.networking.payloads.CardRequest;
 
 public class CardFinderFragment extends Fragment implements MOBClient.CardRequestListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MOBClient.INSTANCE.setCardRequestListener(this);
+        MOBClient.INSTANCE.setOnCardRequestListener(this);
     }
 
     @Override
@@ -24,7 +25,7 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
     }
 
     @Override
-    public void onCardRequested() {
+    public void onCardRequested(CardRequest cardRequest) {
 
     }
 }
