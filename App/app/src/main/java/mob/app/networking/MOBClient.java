@@ -117,6 +117,11 @@ public enum MOBClient implements LoggingCallback {
         return isRunning() && client != null;
     }
 
+    @FunctionalInterface
+    public interface onCardRequested {
+        void onCardRequested();
+    }
+
     @Override
     public void print(String s) {
         Log.d(getClass().getSimpleName(), s);
