@@ -8,8 +8,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import mob.sdk.networking.LoggingCallback;
 import mob.sdk.networking.SocketClient;
+import mob.sdk.networking.Transaction;
+import mob.sdk.networking.TransactionType;
 import mob.sdk.networking.listeners.ConnectionListener;
 import mob.sdk.networking.listeners.DisconnectionListener;
+import mob.sdk.networking.payloads.BattleRequest;
+import mob.sdk.networking.payloads.BattleRequestInvalid;
+import mob.sdk.networking.payloads.BattleResult;
 
 public enum MOBClient implements LoggingCallback {
     INSTANCE;
@@ -22,6 +27,8 @@ public enum MOBClient implements LoggingCallback {
     private SocketClient client;
     private ConnectionListener connectionListener;
     private DisconnectionListener disconnectionListener;
+    private BattleRequestInvalidListener battleRequestInvalidListener;
+    private BattleResultListener battleResultListener;
 
     /**
      * Start the socket to the server.
@@ -47,7 +54,16 @@ public enum MOBClient implements LoggingCallback {
                         connectionListener.onConnection();
 
                     this.client.addTransactionListener((transaction -> {
-
+                        switch (transaction.getType()) {
+                            case BATTLE_REQUEST_INVALID:
+                                if (battleRequestInvalidListener != null)
+                                    battleRequestInvalidListener.onBattleRequestInvalid((BattleRequestInvalid) transaction.getPayload());
+                                break;
+                            case BATTLE_RESULT:
+                                if (battleResultListener != null)
+                                    battleResultListener.onBattleResult((BattleResult) transaction.getPayload());
+                                break;
+                        }
                     }));
 
                     this.client.addDisconnectionListener(() -> {
@@ -98,6 +114,17 @@ public enum MOBClient implements LoggingCallback {
     }
 
     /**
+     * Send a battle request.
+     * @param battleRequest request
+     */
+    public void sendBattleRequest(BattleRequest battleRequest) {
+        if (!canSendTransaction())
+            return;
+
+        client.send(new Transaction(TransactionType.BATTLE_REQUEST, battleRequest));
+    }
+
+    /**
      * On server connection callback.
      * @param listener callback
      */
@@ -113,6 +140,14 @@ public enum MOBClient implements LoggingCallback {
         this.disconnectionListener = listener;
     }
 
+    public void setOnBattleRequestInvalid(BattleRequestInvalidListener listener) {
+        this.battleRequestInvalidListener = listener;
+    }
+
+    public void setOnBattleResult(BattleResultListener listener) {
+        this.battleResultListener = listener;
+    }
+
     private boolean canSendTransaction() {
         return isRunning() && client != null;
     }
@@ -125,5 +160,15 @@ public enum MOBClient implements LoggingCallback {
     @Override
     public void printf(String s, Object... objects) {
         Log.d(getClass().getSimpleName(), String.format(s, objects));
+    }
+
+    @FunctionalInterface
+    public interface BattleRequestInvalidListener {
+        void onBattleRequestInvalid(BattleRequestInvalid battleRequestInvalid);
+    }
+
+    @FunctionalInterface
+    public interface BattleResultListener {
+        void onBattleResult(BattleResult battleResult);
     }
 }
