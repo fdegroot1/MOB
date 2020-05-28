@@ -168,7 +168,7 @@ public enum MOBClient implements LoggingCallback {
         this.battleResultListener = listener;
     }
 
-    public void setOnCardRequestListener(CardRequestListener listener) {
+    public void setOnCardRequest(CardRequestListener listener) {
         this.cardRequestListener = listener;
     }
 
