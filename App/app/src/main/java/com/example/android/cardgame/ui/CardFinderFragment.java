@@ -34,7 +34,10 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
     public void onCardRequested(CardRequest cardRequest) {
         // a card was requested for claiming
 
-        // Toast.makeText(this.getContext(),"Validating card...",Toast.LENGTH_SHORT).show();
+        String enteredCode = cardRequest.getCode();
+        //TODO update ui
+
+        // Toast.makeText(this.getContext(),String.format("Validating code %s...",enteredCode),Toast.LENGTH_SHORT).show();
 
     }
 
