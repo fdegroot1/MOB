@@ -4,14 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.android.cardgame.R;
 
 import mob.app.networking.MOBClient;
-import mob.sdk.cards.Card;
 import mob.sdk.networking.payloads.CardRequest;
 import mob.sdk.networking.payloads.CardRequestInvalid;
 import mob.sdk.networking.payloads.CardResult;
@@ -34,7 +32,7 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
     public void onCardRequested(CardRequest cardRequest) {
         // a card was requested for claiming
 
-        String enteredCode = cardRequest.getCode();
+        String enteredCode = cardRequest.getCardCode();
         //TODO update ui
 
         // Toast.makeText(this.getContext(),String.format("Validating code %s...",enteredCode),Toast.LENGTH_SHORT).show();
@@ -44,7 +42,7 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
     @Override
     public void onCardRequestInvalid(CardRequestInvalid cardRequestInvalid) {
         // a requested cards code was invalid
-        String wrongCode = cardRequestInvalid.getCode();
+        String wrongCode = cardRequestInvalid.getCardCode();
         // TODO update ui
 
     }
@@ -52,7 +50,7 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
     @Override
     public void onCardResult(CardResult cardResult) {
         // a card was returned from the server
-        Card claimedCard = cardResult.getCard();
+        String cardId = cardResult.getCardId();
         //TODO update ui
 
 
