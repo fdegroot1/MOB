@@ -4,6 +4,10 @@ import android.util.Log;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Map;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import mob.sdk.networking.LoggingCallback;
@@ -23,6 +27,9 @@ public enum MOBClient implements LoggingCallback {
     INSTANCE;
 
     private final AtomicBoolean connecting = new AtomicBoolean(false);
+    private final Queue<Transaction> transactionQueue = new ConcurrentLinkedQueue<>();
+    private final Map<Transaction, SocketClient.SuccessListener> transactionSuccessListenerMap = new ConcurrentHashMap<>();
+    private final Map<Transaction, SocketClient.FailureListener> transactionFailureListenerMap = new ConcurrentHashMap<>();
 
     private Socket socket;
     private SocketClient client;
@@ -33,6 +40,10 @@ public enum MOBClient implements LoggingCallback {
     private CardResultListener cardResultListener;
     private BattleRequestInvalidListener battleRequestInvalidListener;
     private BattleResultListener battleResultListener;
+
+    public void start() {
+        start("host", 0);
+    }
 
     /**
      * Start the socket to the server.
@@ -89,13 +100,31 @@ public enum MOBClient implements LoggingCallback {
                             disconnectionListener.onDisconnection();
                     });
 
+                    while (transactionQueue.size() > 0) {
+                        Transaction transaction = transactionQueue.peek();
+                        SocketClient.SuccessListener successListener = transactionSuccessListenerMap.get(transaction);
+                        SocketClient.FailureListener failureListener = transactionFailureListenerMap.get(transaction);
+                        client.send(transaction, () -> {
+                            if (successListener != null)
+                                successListener.onSuccess();
+                            transactionQueue.remove(transaction);
+                            transactionSuccessListenerMap.remove(transaction);
+                            transactionFailureListenerMap.remove(transaction);
+                        }, () -> {
+                            if (failureListener != null)
+                                failureListener.onFailure();
+                        });
+
+                    }
+
                     connecting.set(false);
                 } catch (IOException exception) {
                     Log.d(getClass().getSimpleName(), "Failed to connect to server. Will try again in 1 second.");
 
                     try {
                         Thread.sleep(1000);
-                    } catch (InterruptedException e) { }
+                    } catch (InterruptedException e) {
+                    }
                 }
             }
         }).start();
@@ -133,28 +162,25 @@ public enum MOBClient implements LoggingCallback {
 
     /**
      * Send a battle request.
+     *
      * @param battleRequest request
      */
     public void sendBattleRequest(BattleRequest battleRequest, SocketClient.SuccessListener listener) {
-        if (!canSendTransaction())
-            return;
-
-        client.send(new Transaction(TransactionType.BATTLE_REQUEST, battleRequest), listener, null);
+        queueTransaction(new Transaction(TransactionType.BATTLE_REQUEST, battleRequest), listener, null);
     }
 
     /**
      * Send a card request.
+     *
      * @param cardRequest the request to send
      */
     public void sendCardRequest(CardRequest cardRequest, SocketClient.SuccessListener successListener, SocketClient.FailureListener failureListener) {
-        if (!canSendTransaction())
-            return;
-
-        client.send(new Transaction(TransactionType.CARD_REQUEST,cardRequest),successListener,failureListener);
+        queueTransaction(new Transaction(TransactionType.CARD_REQUEST, cardRequest), successListener, failureListener);
     }
 
     /**
      * On server connection callback.
+     *
      * @param listener callback
      */
     public void setOnConnection(ConnectionListener listener) {
@@ -163,6 +189,7 @@ public enum MOBClient implements LoggingCallback {
 
     /**
      * On server disconnection callback.
+     *
      * @param listener callback
      */
     public void setOnDisconnection(DisconnectionListener listener) {
@@ -171,6 +198,7 @@ public enum MOBClient implements LoggingCallback {
 
     /**
      * On battle request invalid callback.
+     *
      * @param listener callback
      */
     public void setOnBattleRequestInvalid(BattleRequestInvalidListener listener) {
@@ -179,6 +207,7 @@ public enum MOBClient implements LoggingCallback {
 
     /**
      * On battle result callback.
+     *
      * @param listener callback
      */
     public void setOnBattleResult(BattleResultListener listener) {
@@ -187,6 +216,7 @@ public enum MOBClient implements LoggingCallback {
 
     /**
      * On card request callback.
+     *
      * @param listener callback
      */
     public void setOnCardRequest(CardRequestListener listener) {
@@ -195,6 +225,7 @@ public enum MOBClient implements LoggingCallback {
 
     /**
      * On card request invalid callback.
+     *
      * @param listener callback
      */
     public void setOnCardRequestInvalid(CardRequestInvalidListener listener) {
@@ -203,14 +234,11 @@ public enum MOBClient implements LoggingCallback {
 
     /**
      * On card result callback.
+     *
      * @param listener callback
      */
     public void setOnCardResult(CardResultListener listener) {
         this.cardResultListener = listener;
-    }
-
-    private boolean canSendTransaction() {
-        return isRunning() && client != null;
     }
 
     @Override
@@ -221,6 +249,26 @@ public enum MOBClient implements LoggingCallback {
     @Override
     public void printf(String s, Object... objects) {
         Log.d(getClass().getSimpleName(), String.format(s, objects));
+    }
+
+    private boolean canSendTransaction() {
+        return isRunning() && client != null;
+    }
+
+    private void queueTransaction(Transaction transaction, SocketClient.SuccessListener successListener, SocketClient.FailureListener failureListener) {
+        if (canSendTransaction()) {
+            client.send(transaction, successListener, () -> {
+                if (failureListener != null)
+                    failureListener.onFailure();
+                transactionQueue.add(transaction);
+                transactionSuccessListenerMap.put(transaction, successListener);
+                transactionFailureListenerMap.put(transaction, failureListener);
+            });
+        } else {
+            transactionQueue.add(transaction);
+            transactionSuccessListenerMap.put(transaction, successListener);
+            transactionFailureListenerMap.put(transaction, failureListener);
+        }
     }
 
     @FunctionalInterface
