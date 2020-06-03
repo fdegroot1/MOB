@@ -52,4 +52,9 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+    public void goToCardView(View view) {
+        Intent intent = new Intent(this, CardFinder.class);
+        startActivity(intent);
+
+    }
 }
