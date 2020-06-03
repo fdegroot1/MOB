@@ -1,11 +1,9 @@
 package com.example.android.cardgame.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
@@ -22,8 +20,6 @@ public class CardFinderFragment extends Fragment {
     public CardFinderFragment() {
 
     }
-
-
     public static CardFinderFragment newInstance(String param1, String param2) {
         CardFinderFragment fragment = new CardFinderFragment();
         Bundle args = new Bundle();
@@ -46,5 +42,4 @@ public class CardFinderFragment extends Fragment {
 
         return inflater.inflate(R.layout.activity_cardfinder, container, false);
     }
-
 }
