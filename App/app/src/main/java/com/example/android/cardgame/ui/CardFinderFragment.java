@@ -1,16 +1,17 @@
 package com.example.android.cardgame.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.android.cardgame.R;
 import com.example.android.cardgame.SavedCardSettings;
-
-import java.util.Objects;
 
 import mob.app.networking.MOBClient;
 import mob.sdk.networking.payloads.CardRequest;
@@ -18,6 +19,9 @@ import mob.sdk.networking.payloads.CardRequestInvalid;
 import mob.sdk.networking.payloads.CardResult;
 
 public class CardFinderFragment extends Fragment implements MOBClient.CardRequestListener, MOBClient.CardResultListener, MOBClient.CardRequestInvalidListener {
+    private EditText mTestCardField;
+    private Button mTestCardButton;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +32,14 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_cardfinder, container, false);
+        View view = inflater.inflate(R.layout.fragment_cardfinder, container, false);
+
+        this.mTestCardField = view.findViewById(R.id.testCardField);
+        this.mTestCardButton = view.findViewById(R.id.testCardButton);
+
+        mTestCardButton.setOnClickListener(v -> sendCardRequest());
+
+        return view;
     }
 
     @Override
@@ -54,7 +65,7 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
     public void onCardResult(CardResult cardResult) {
         // a card was returned from the server
         String cardId = cardResult.getCardId();
-        SavedCardSettings.INSTANCE.saveCard(Objects.requireNonNull(this.getContext()),cardId);
+        SavedCardSettings.INSTANCE.saveCard(cardId);
         //TODO update ui
 
 
@@ -63,12 +74,18 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
     public void sendCardRequest() {
         // TODO connect ui elements to this
         // TODO get card code from ui and replace "test" with
-        MOBClient.INSTANCE.sendCardRequest(new CardRequest("test"),
+
+        String cardCode = mTestCardField.getText().toString();
+
+        MOBClient.INSTANCE.start();
+        MOBClient.INSTANCE.sendCardRequest(new CardRequest(cardCode),
                 () -> {
+                    Log.d(getClass().getSimpleName(), "Success");
                     // Card request sent successfully!
                     //TODO update ui
                 },
                 () -> {
+                    Log.d(getClass().getSimpleName(), "Failure");
                     // Card request failed!
                     //TODO update ui
                 });

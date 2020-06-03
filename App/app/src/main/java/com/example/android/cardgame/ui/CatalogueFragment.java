@@ -28,7 +28,7 @@ public class CatalogueFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.cards = new ArrayList<>(CardRepository.INSTANCE.getSize());
-        this.cardCodes = SavedCardSettings.INSTANCE.loadCards(Objects.requireNonNull(this.getContext()));
+        this.cardCodes = SavedCardSettings.INSTANCE.loadCards();
 
         for (String code : this.cardCodes) {
             Card card = CardRepository.INSTANCE.getCard(code);
