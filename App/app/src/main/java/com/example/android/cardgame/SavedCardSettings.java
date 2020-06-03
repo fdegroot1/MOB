@@ -25,6 +25,7 @@ public enum SavedCardSettings {
         editor.putStringSet(CARD_IDS, cardIds);
         editor.apply();
 
+        Log.d(getClass().getSimpleName(), String.format("Card: %s saved on device", cardId));
     }
 
     public void saveCards( String... cardIds) {
