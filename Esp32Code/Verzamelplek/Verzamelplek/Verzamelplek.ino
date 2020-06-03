@@ -3,8 +3,8 @@
 #include <LiquidCrystal_I2C.h>
 
 // Zelf instellen voor je eigen WLAN
-const char* WLAN_SSID = "Eigen WIFI";
-const char* WLAN_ACCESS_KEY = "Eigen WIFI";
+const char* WLAN_SSID = "Eigen";
+const char* WLAN_ACCESS_KEY = "Eigen";
 
 // CLIENT_ID moet uniek zijn, dus zelf aanpassen (willekeurige letters en cijfers)
 const char* MQTT_CLIENT_ID = "MQTTExampleTryout_dsjhaajksdhfjkhg";
@@ -13,12 +13,11 @@ const char* MQTT_BROKER_URL = "maxwell.bps-software.nl";
 const int   MQTT_PORT = 1883;
 const char* MQTT_USERNAME = "androidTI";
 const char* MQTT_PASSWORD = "&FN+g$$Qhm7j";
+const char* MQTT_DEVICE_ID = "card:4C11AECBE754";
 
 // Definieer de MQTT topics
-const char* MQTT_TOPIC_LCD = "Student/Fabian/Test";
-const char* MQTT_TOPIC_SEGMENT = "Student/Fabian/Test2";
-const char* MQTT_TOPIC_BUTTON1 = "Demo/Hans/Btn1";
-const char* MQTT_TOPIC_BUTTON2 = "Demo/Hans/Btn2";
+const char* MQTT_TOPIC_SUBSCRIBE = "groep/a3/device/4C11AECBE754";
+const char* MQTT_TOPIC_CONNECT = "groep/a3/connect";
 // Definieer de te gebruiken Quality of Service (QoS)
 const int   MQTT_QOS = 0;
 const int LINE_LENGTH = 16;
@@ -53,26 +52,37 @@ void mqttCallback(char* topic, byte* payload, unsigned int length) {
   Serial.println(topic);
   Serial.print("Payload length ");
   Serial.println(length);
-  // Kijk welk topic is ontvangen en handel daarnaar
-  if (strcmp(topic, MQTT_TOPIC_LCD) == 0) {
-    // De payload is een tekst voor op het LCD
-    // Let op, geen null-terminated string, dus voeg zelf de \0 toe
-    char txt[LINE_LENGTH + 1];
-    for (int i = 0; i < LINE_LENGTH + 1; i++) { txt[i] = '\0'; }
-    strncpy(txt, (const char*) payload, length > 16 ? 16 : length);
-    // Laat de tekst zien in zowel log als op het LCD
-    Serial.print("Text: ");
-    Serial.println(txt); 
-    lcd.clear();
-    lcd.setCursor(0,0);
-    lcd.print(txt);
-  }
-  if(strcmp(topic, MQTT_TOPIC_SEGMENT) == 0){
-    n--;
-    digitalWrite(BUZZER, HIGH);
-    delay(50);
-    digitalWrite(BUZZER, LOW);
-  }
+
+  String myString = String(((char*)payload)).substring(0,length)+":";
+  Serial.println(myString);
+  
+    String sa[4];
+    int r=0, t=0;
+
+    for (int i=0; i < myString.length(); i++){ 
+      if(myString.charAt(i) == ':'){  
+        sa[t] = myString.substring(r, i); 
+        r=(i+1); 
+        t++; 
+      }
+    }
+
+    Serial.println(sa[0]);
+    
+    if(sa[0].equals("new")){
+      lcd.clear();
+      lcd.setCursor(0,0);
+      lcd.print(sa[1]);
+      lcd.setCursor(0,1);
+      lcd.print(sa[2]);
+      n = sa[3].toInt();
+      Serial.println(n);
+    }
+    else if(sa[0].equals("decreased")){
+      n--;
+      Serial.println(n);
+      
+    }
 }
 void setup() {
   // put your setup code here, to run once:
@@ -100,28 +110,21 @@ void setup() {
     Serial.println("Connected to MQTT broker");
   }
   // Subscribe op de LCD topic
-  if (!mqttClient.subscribe(MQTT_TOPIC_LCD, MQTT_QOS)) {
+  if (!mqttClient.subscribe(MQTT_TOPIC_SUBSCRIBE, MQTT_QOS)) {
     Serial.print("Failed to subscribe to topic ");
-    Serial.println(MQTT_TOPIC_LCD);
+    Serial.println(MQTT_TOPIC_SUBSCRIBE);
   } else {
     Serial.print("Subscribed to topic ");
-    Serial.println(MQTT_TOPIC_LCD);
-  }
-  if (!mqttClient.subscribe(MQTT_TOPIC_SEGMENT, MQTT_QOS)) {
-    Serial.print("Failed to subscribe to topic ");
-    Serial.println(MQTT_TOPIC_SEGMENT);
-  } else {
-    Serial.print("Subscribed to topic ");
-    Serial.println(MQTT_TOPIC_SEGMENT);
+    Serial.println(MQTT_TOPIC_SUBSCRIBE);
   }
   // Publish to topic
-  if(!mqttClient.publish(MQTT_TOPIC_LCD, "yeet")){
+  if(!mqttClient.publish(MQTT_TOPIC_CONNECT, MQTT_DEVICE_ID)){
     Serial.print("Failed to publish");
-    Serial.println(MQTT_TOPIC_LCD);
+    Serial.println(MQTT_TOPIC_CONNECT);
   }
   else{
     Serial.print("Published to topic ");
-    Serial.println(MQTT_TOPIC_LCD);
+    Serial.println(MQTT_TOPIC_CONNECT);
   }
   
   lcd.init();                      // initialize the lcd 
@@ -144,10 +147,6 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   mqttClient.loop();
-  
-  if(count%20==0){
-    mqttClient.publish(MQTT_TOPIC_SEGMENT, "hoi");
-  }
  
   clearLEDs();//clear the 7-segment display screen
   pickDigit(0);//Light up 7-segment display d1
