@@ -3,8 +3,8 @@
 #include <LiquidCrystal_I2C.h>
 
 // Zelf instellen voor je eigen WLAN
-const char* WLAN_SSID = "HP laptop";
-const char* WLAN_ACCESS_KEY = "qwerty123";
+const char* WLAN_SSID = "Eigen";
+const char* WLAN_ACCESS_KEY = "Eigen";
 
 // CLIENT_ID moet uniek zijn, dus zelf aanpassen (willekeurige letters en cijfers)
 const char* MQTT_CLIENT_ID = "MQTTExampleTryout_redouan";
@@ -110,6 +110,10 @@ void loop() {
   // put your main code here, to run repeatedly:
    buttonState = digitalRead(buttonPin1);
    buttonState2 = digitalRead(buttonPin2);
+
+   Serial.println(buttonState);
+   //Serial.println(buttonState2);
+   
    
    if(buttonState == HIGH){
       mqttClient.publish(MQTT_TOPIC_LCD, "RED SIDE WON");
