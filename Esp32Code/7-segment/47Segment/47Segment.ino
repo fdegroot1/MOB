@@ -3,11 +3,11 @@ int a = 1; //0
 int b = 2;
 int c = 3; //32
 int d = 4;
-int e = 5;
-int f = 21; //25
+int e = 15; 
+int f = 25; //25
 int g = 17;
 int c1 = 23;
-int c2 = 22;//26
+int c2 = 26;//26
 int c3 = 19;
 int c4 = 18;
 
