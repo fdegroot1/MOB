@@ -37,7 +37,7 @@ public enum SavedCardSettings {
         this.cardIds = sharedPreferences.getStringSet(CARD_IDS, cardIds);
         if (this.cardIds == null || this.cardIds.isEmpty()) {
             // there are no cards yet
-            Toast.makeText(context,"You have no cards yet",Toast.LENGTH_SHORT);
+            Toast.makeText(context,"You have no cards yet",Toast.LENGTH_SHORT).show();
         }
         Log.d(TAG, "loadCards: " + this.cardIds);
         return this.cardIds;
