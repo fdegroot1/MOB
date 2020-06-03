@@ -24,6 +24,12 @@ public enum SavedCardSettings {
 
     }
 
+    public void saveCards(Context context, String... cardIds) {
+        for (String card : cardIds) {
+            this.saveCard(context,card);
+        }
+    }
+
     public Set<String> loadCards(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(CARD_IDS,0);
         this.cardIds = sharedPreferences.getStringSet(CARD_IDS, cardIds);
