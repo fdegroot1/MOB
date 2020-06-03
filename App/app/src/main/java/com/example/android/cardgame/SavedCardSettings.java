@@ -15,10 +15,11 @@ public enum SavedCardSettings {
 
     private Set<String> cardIds = new HashSet<>();
     public final String CARD_IDS = "cardIDs";
+    private Context context;
 
     // need to save the identifiers for the cards that have been claimed
 
-    public void saveCard(Context context, String cardId) {
+    public void saveCard(String cardId) {
         SharedPreferences.Editor editor = context.getSharedPreferences(CARD_IDS,0).edit();
         this.cardIds.add(cardId);
         editor.putStringSet(CARD_IDS, cardIds);
@@ -26,13 +27,13 @@ public enum SavedCardSettings {
 
     }
 
-    public void saveCards(Context context, String... cardIds) {
+    public void saveCards( String... cardIds) {
         for (String card : cardIds) {
-            this.saveCard(context,card);
+            this.saveCard(card);
         }
     }
 
-    public Set<String> loadCards(Context context) {
+    public Set<String> loadCards() {
         SharedPreferences sharedPreferences = context.getSharedPreferences(CARD_IDS,0);
         this.cardIds = sharedPreferences.getStringSet(CARD_IDS, cardIds);
         if (this.cardIds == null || this.cardIds.isEmpty()) {
@@ -48,5 +49,9 @@ public enum SavedCardSettings {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
     }
 }

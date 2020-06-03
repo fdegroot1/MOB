@@ -69,7 +69,7 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
     public void onCardResult(CardResult cardResult) {
         // a card was returned from the server
         String cardId = cardResult.getCardId();
-        SavedCardSettings.INSTANCE.saveCard(Objects.requireNonNull(this.getContext()),cardId);
+        SavedCardSettings.INSTANCE.saveCard(cardId);
         //TODO update ui
 
 

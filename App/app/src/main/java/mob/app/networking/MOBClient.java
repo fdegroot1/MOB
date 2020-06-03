@@ -90,6 +90,8 @@ public enum MOBClient implements LoggingCallback {
                             case CARD_RESULT:
                                 if (cardResultListener != null) {
                                     cardResultListener.onCardResult((CardResult) transaction.getPayload());
+                                    //TODO add ability to send that a card has been claimed
+                                    //TODO receive message if the amount of cards is empty and a new code needs to be generated
                                 }
                                 break;
                         }

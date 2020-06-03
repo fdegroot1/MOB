@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         NavController NavController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(bottomNavigationView, NavController);
 
+        SavedCardSettings.INSTANCE.setContext(this.getApplicationContext());
+
     }
 
     @Override
