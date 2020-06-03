@@ -13,4 +13,9 @@ public class OptionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
     }
+
+    private void clearCards() {
+        //TODO add ui button to clear cards
+        SavedCardSettings.INSTANCE.clear();
+    }
 }
