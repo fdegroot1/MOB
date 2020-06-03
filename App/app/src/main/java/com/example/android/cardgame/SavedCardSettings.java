@@ -45,7 +45,7 @@ public enum SavedCardSettings {
         return this.cardIds;
     }
 
-    public void clear(Context context) {
+    public void clear() {
         SharedPreferences sharedPreferences = context.getSharedPreferences(CARD_IDS,0);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
