@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorAccent</item>
         <item name="colorPrimaryDark">@color/colorAccent</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
 
         <item name="android:textColor">@color/colorText</item>
         <item name="android:windowBackground">@color/colorLight</item>
@@ -15,8 +15,12 @@
         <item name="actionBarSize">40dp</item>
     </style>
 
+    <!-- Bottom Bar Style Settings -->
     <style name="BottomBarStyle">
+        <!-- Changes Bottom Bar color -->
         <item name="backgroundTint">@color/colorAccent</item>
+        <!-- Changes Icon Colors -->
+        <item name="itemIconTint">@color/colorPrimaryDark</item>
     </style>
 
 </resources>
