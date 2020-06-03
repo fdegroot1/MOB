@@ -61,6 +61,7 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
 
         BattleRequest battleRequest = new BattleRequest(tableId, mTeamColor);
 
+        MOBClient.INSTANCE.start();
         MOBClient.INSTANCE.sendBattleRequest(battleRequest, () -> {
             // battle request send!
             // @todo update UI
@@ -104,6 +105,8 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
         } else {
             // @todo update UI
         }
+
+        MOBClient.INSTANCE.stop();
 
         this.mCardId = battleResult.getCardId();
     }
