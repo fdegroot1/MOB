@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(bottomNavigationView, NavController);
 
         // TEST code
-        SavedCardSettings.INSTANCE.saveCard(this.getApplicationContext(),"parfoes");
+        SavedCardSettings.INSTANCE.saveCards(this.getApplicationContext(),"parfoes","avanius","kevin");
     }
 
     @Override
