@@ -20,7 +20,7 @@
         <!-- Changes Bottom Bar color -->
         <item name="backgroundTint">@color/colorAccent</item>
         <!-- Changes Icon Colors -->
-        <item name="itemIconTint">@color/colorPrimaryDark</item>
+        <item name="itemIconTint">@color/colorPrimary</item>
     </style>
 
 </resources>
