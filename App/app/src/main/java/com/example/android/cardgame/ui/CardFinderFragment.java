@@ -13,8 +13,6 @@ import androidx.fragment.app.Fragment;
 import com.example.android.cardgame.R;
 import com.example.android.cardgame.SavedCardSettings;
 
-import java.util.Objects;
-
 import mob.app.networking.MOBClient;
 import mob.sdk.networking.payloads.CardRequest;
 import mob.sdk.networking.payloads.CardRequestInvalid;
@@ -39,9 +37,7 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
         this.mTestCardField = view.findViewById(R.id.testCardField);
         this.mTestCardButton = view.findViewById(R.id.testCardButton);
 
-        mTestCardButton.setOnClickListener(v -> {
-            sendCardRequest();
-        });
+        mTestCardButton.setOnClickListener(v -> sendCardRequest());
 
         return view;
     }
