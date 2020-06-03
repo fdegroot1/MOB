@@ -20,33 +20,5 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        bottomNavigation = findViewById(R.id.bottom_navigation);
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        NavController NavController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupWithNavController(bottomNavigationView, NavController);
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.options_menu, menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.gamerules_item:
-                Intent intent = new Intent(this, GamerulesActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.options_item:
-                Intent intent2 = new Intent(this, OptionsActivity.class);
-                startActivity(intent2);
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 }
