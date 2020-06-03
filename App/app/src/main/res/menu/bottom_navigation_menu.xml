@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/catalogus"
+        android:icon="@drawable/ic_list_black_24dp"
+        android:title="Catalogus" />
+    <item
+        android:id="@+id/cardfinder"
+        android:icon="@drawable/ic_card_membership_black_24dp"
+        android:title="Cardfinder" />
+    <item
+        android:id="@+id/battle"
+        android:icon="@drawable/ic_accessibility_black_24dp"
+        android:title="Battle" />
+</menu>
