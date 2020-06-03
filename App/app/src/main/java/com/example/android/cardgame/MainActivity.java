@@ -1,27 +1,64 @@
 package com.example.android.cardgame;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
-import mob.app.networking.MOBClient;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import mob.sdk.cards.CardRepository;
+
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MOBClient.getInstance().start("10.0.2.2", 10_000);
-        MOBClient.getInstance().setOnConnection(() -> {
-            Log.i(getClass().getSimpleName(), "Connected to server");
-        });
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        NavController NavController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupWithNavController(bottomNavigationView, NavController);
+
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        MOBClient.getInstance().stop();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.options_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.gamerules_item:
+                launchGameRules();
+                return true;
+            case R.id.options_item:
+                launchOptions();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void launchOptions() {
+        Intent intent = new Intent(getApplicationContext(), OptionsActivity.class);
+        startActivity(intent);
+    }
+
+    private void launchGameRules() {
+        Intent intent = new Intent(getApplicationContext(), GamerulesActivity.class);
+        startActivity(intent);
+
     }
 }
