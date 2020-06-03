@@ -19,6 +19,7 @@ import mob.sdk.networking.payloads.BattleResult;
 public class BattleFragment extends Fragment implements MOBClient.BattleRequestInvalidListener, MOBClient.BattleResultListener {
     private EditText mTableIdEditText;
     private BattleRequest.Color mTeamColor;
+    // TODO set card that will be claimed
     private String mCardId;
 
     @Override
@@ -81,15 +82,18 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
 
     @Override
     public void onBattleRequestInvalid(BattleRequestInvalid battleRequestInvalid) {
-        switch (battleRequestInvalid.getField()) {
-            case TABLE_ID:
-                // table id is wrong
+        switch (battleRequestInvalid.getReason()) {
+            case ALREADY_PLAYING:
+                // table is already playing
                 // @todo update UI
                 break;
-            case TEAM_COLOR:
-                // team color is already taken
+            case DEVICE_ID_WRONG:
+                // device id is wrong
                 // @todo update UI
                 break;
+            case TEAM_ALREADY_TAKEN:
+                // chosen team is already taken
+                // @TODO: update ui
         }
     }
 
@@ -108,7 +112,5 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
         }
 
         MOBClient.INSTANCE.stop();
-
-        this.mCardId = battleResult.getCardId();
     }
 }
