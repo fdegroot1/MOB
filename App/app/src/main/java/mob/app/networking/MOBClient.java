@@ -42,7 +42,7 @@ public enum MOBClient implements LoggingCallback {
     private BattleResultListener battleResultListener;
 
     public void start() {
-        start("host", 0);
+        start("10.0.2.2", 10_000);
     }
 
     /**
@@ -257,13 +257,15 @@ public enum MOBClient implements LoggingCallback {
 
     private void queueTransaction(Transaction transaction, SocketClient.SuccessListener successListener, SocketClient.FailureListener failureListener) {
         if (canSendTransaction()) {
-            client.send(transaction, successListener, () -> {
-                if (failureListener != null)
-                    failureListener.onFailure();
-                transactionQueue.add(transaction);
-                transactionSuccessListenerMap.put(transaction, successListener);
-                transactionFailureListenerMap.put(transaction, failureListener);
-            });
+            new Thread(() -> {
+                client.send(transaction, successListener, () -> {
+                    if (failureListener != null)
+                        failureListener.onFailure();
+                    transactionQueue.add(transaction);
+                    transactionSuccessListenerMap.put(transaction, successListener);
+                    transactionFailureListenerMap.put(transaction, failureListener);
+                });
+            }).start();
         } else {
             transactionQueue.add(transaction);
             transactionSuccessListenerMap.put(transaction, successListener);
