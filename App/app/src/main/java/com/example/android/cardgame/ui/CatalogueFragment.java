@@ -23,6 +23,7 @@ public class CatalogueFragment extends Fragment {
 
     private Set<String> cardCodes;
     private ArrayList<Card> cards;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +32,8 @@ public class CatalogueFragment extends Fragment {
 
         for (String code : this.cardCodes) {
             Card card = CardRepository.INSTANCE.getCard(code);
-            this.cards.add(card);
+            if (card != null)
+                this.cards.add(card);
         }
 
         Log.d(TAG, "onCreate: " + cards);

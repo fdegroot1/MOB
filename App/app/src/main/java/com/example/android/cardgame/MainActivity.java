@@ -14,6 +14,8 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import mob.sdk.cards.CardRepository;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
         NavController NavController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(bottomNavigationView, NavController);
 
-        // TEST code
-        SavedCardSettings.INSTANCE.saveCards(this.getApplicationContext(),"parfoes","avanius","kevin");
     }
 
     @Override

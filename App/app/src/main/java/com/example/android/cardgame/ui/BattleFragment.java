@@ -9,6 +9,7 @@ import android.widget.EditText;
 import androidx.fragment.app.Fragment;
 
 import com.example.android.cardgame.R;
+import com.example.android.cardgame.SavedCardSettings;
 
 import mob.app.networking.MOBClient;
 import mob.sdk.networking.payloads.BattleRequest;
