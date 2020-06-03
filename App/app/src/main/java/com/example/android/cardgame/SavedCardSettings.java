@@ -21,7 +21,11 @@ public enum SavedCardSettings {
 
     public void saveCard(String cardId) {
         SharedPreferences.Editor editor = context.getSharedPreferences(CARD_IDS,0).edit();
-        this.cardIds = loadCards();
+        this.cardIds = context.getSharedPreferences(CARD_IDS,0).getStringSet(CARD_IDS,null);
+
+        if (this.cardIds == null) {
+            this.cardIds = new HashSet<>();
+        }
         this.cardIds.add(cardId);
         editor.putStringSet(CARD_IDS, cardIds);
         editor.apply();
