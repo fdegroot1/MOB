@@ -380,9 +380,9 @@ void loop() {
             break;
         case FINISH:
             handleFinishState();
-        case ABORT:
-            handleAbortState();
-            break;
+//        case ABORT:
+//            handleAbortState();
+//            break;
     }
 
     mqttClient.loop();
