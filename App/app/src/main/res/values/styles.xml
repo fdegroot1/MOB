@@ -1,26 +1,72 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Green Tint application theme. -->
+    <style name="GreeTint" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+
+        <!-- Action Bor Color -->
         <item name="colorPrimary">@color/colorAccent</item>
+        <!-- Status Bar Color -->
         <item name="colorPrimaryDark">@color/colorAccent</item>
+        <!-- IDK -->
         <item name="colorAccent">@color/colorPrimaryDark</item>
 
+        <!-- Text Color -->
         <item name="android:textColor">@color/colorText</item>
+        <!-- Background Color -->
         <item name="android:windowBackground">@color/colorLight</item>
+        <!-- IDK -->
         <item name="android:colorBackground">@color/colorAccent</item>
+
+        <!-- Text Font-->
         <item name="fontFamily">@font/proxima_nova_bold</item>
+        <!-- Button Background Color -->
         <item name="backgroundTint">@color/colorAccent</item>
+        <!-- ActionBar Size -->
         <item name="actionBarSize">40dp</item>
     </style>
 
-    <!-- Bottom Bar Style Settings -->
-    <style name="BottomBarStyle">
+    <!-- Green Bottom Bar Style Settings -->
+    <style name="BottomBarStyleGreen">
         <!-- Changes Bottom Bar color -->
         <item name="backgroundTint">@color/colorAccent</item>
         <!-- Changes Icon Colors -->
         <item name="itemIconTint">@color/colorPrimary</item>
+    </style>
+
+
+    <!-- Orange Tint application theme. -->
+    <style name="OrangeTint" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+
+        <!-- Action Bor Color -->
+        <item name="colorPrimary">@color/yellow</item>
+        <!-- Status Bar Color -->
+        <item name="colorPrimaryDark">@color/yellow</item>
+        <!-- IDK -->
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+
+        <!-- Text Color -->
+        <item name="android:textColor">@color/red</item>
+        <!-- Background Color -->
+        <item name="android:windowBackground">@color/lightGreen</item>
+        <!-- IDK -->
+        <item name="android:colorBackground">@color/colorAccent</item>
+
+        <!-- Text Font-->
+        <item name="fontFamily">@font/proxima_nova_bold</item>
+        <!-- Button Background Color -->
+        <item name="backgroundTint">@color/yellow</item>
+        <!-- ActionBar Size -->
+        <item name="actionBarSize">40dp</item>
+    </style>
+
+    <!-- Orange Bottom Bar Style Settings -->
+    <style name="BottomBarStyleOrange">
+        <!-- Changes Bottom Bar color -->
+        <item name="backgroundTint">@color/yellow</item>
+        <!-- Changes Icon Colors -->
+        <item name="itemIconTint">@color/purple</item>
     </style>
 
 </resources>

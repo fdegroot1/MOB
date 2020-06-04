@@ -6,4 +6,14 @@
     <color name="colorLight">#fff9e0</color>
     <color name="colorText">#355c7d</color>
     <color name="buttonColor">#90BE6D</color>
+
+    <color name="test">#000000</color>
+    
+    <color name="red">#F94144</color>
+    <color name="orange">#F3722C</color>
+    <color name="yellow">#F8961E</color>
+    <color name="yellowLight">#F9C74F</color>
+    <color name="lightGreen">#90BE6D</color>
+    <color name="turquoise">#43AA8B</color>
+    <color name="purple">#577590</color>
 </resources>
