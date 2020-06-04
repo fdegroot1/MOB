@@ -191,7 +191,7 @@ void handleIdleState() {
 void handleChoosingState() {
     unsigned long currentTime = millis();
 
-   if((unsigned long)currentTime - elapsedTime <= 30000){
+   if((unsigned long)currentTime - elapsedTime <= 90000){
   
     redChoiceButton.read();
     redConfirmButton.read();
