@@ -18,6 +18,7 @@ import com.example.android.cardgame.R;
 import com.example.android.cardgame.SavedCardSettings;
 
 import mob.app.networking.MOBClient;
+import mob.sdk.cards.CardRepository;
 import mob.sdk.networking.payloads.CardRequest;
 import mob.sdk.networking.payloads.CardRequestInvalid;
 import mob.sdk.networking.payloads.CardResult;
@@ -71,6 +72,9 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
         // a card was returned from the server
         String cardId = cardResult.getCardId();
         SavedCardSettings.INSTANCE.saveCard(cardId);
+
+
+        showDialog("You received a new card: " + CardRepository.INSTANCE.getCard(cardId).getName() + ". Go to your catalogue to see it!");
         //TODO update ui
 
 
