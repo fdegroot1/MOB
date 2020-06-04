@@ -3,6 +3,7 @@ package com.example.android.cardgame.ui;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
@@ -82,20 +83,14 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
             SavedCardSettings.INSTANCE.saveCard(cardId);
             showDialog(R.string.new_card_received + name + "!");
             mTestCardField.getText().clear();
-            hideKeyboard(getActivity());
+            hideKeyboardFrom(this.getContext(),mTestCardField);
         }
 
 
     }
 
-    public static void hideKeyboard(Activity activity) {
-        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        //Find the currently focused view, so we can grab the correct window token from it.
-        View view = activity.getCurrentFocus();
-        //If no view currently has focus, create a new one, just so we can grab a window token from it
-        if (view == null) {
-            view = new View(activity);
-        }
+    public static void hideKeyboardFrom(Context context, View view) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
