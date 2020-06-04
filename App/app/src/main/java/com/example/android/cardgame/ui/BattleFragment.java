@@ -9,7 +9,6 @@ import android.widget.EditText;
 import androidx.fragment.app.Fragment;
 
 import com.example.android.cardgame.R;
-import com.example.android.cardgame.SavedCardSettings;
 
 import mob.app.networking.MOBClient;
 import mob.sdk.networking.payloads.BattleRequest;
@@ -31,7 +30,7 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_battle, container, false);
+        View view = inflater.inflate(R.layout.fragment_battle, container, false);
 
         // @todo set mTableIdEditText
 
