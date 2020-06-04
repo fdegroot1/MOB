@@ -74,10 +74,11 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
         String name = CardRepository.INSTANCE.getCard(cardId).getName();
 
         if (SavedCardSettings.INSTANCE.loadCards().contains(cardId)) {
-            showDialog("You already have the card " + name + "!");
+            showDialog(R.string.card_already_got + name + "!");
         } else {
             SavedCardSettings.INSTANCE.saveCard(cardId);
-            showDialog("You received a new card: " + name + ". Go to your catalogue to see it!");
+            showDialog(R.string.new_card_received + name + "!");
+            mTestCardField.getText().clear();
         }
 
 

@@ -51,4 +51,6 @@
     <string name="card_no_code">Please enter a card code!</string>
     <string name="card_request_sent">Card request sent!</string>
     <string name="card_request_failed">Card request failed!</string>
+    <string name="new_card_received">You received a new card: </string>
+    <string name="card_already_got">You already have the card </string>
 </resources>
