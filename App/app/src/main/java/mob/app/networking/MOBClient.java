@@ -5,6 +5,7 @@ import android.util.Log;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -102,8 +103,10 @@ public enum MOBClient implements LoggingCallback {
 
                     while (transactionQueue.size() > 0) {
                         Transaction transaction = transactionQueue.peek();
+                        //TODO check if this is right
                         SocketClient.SuccessListener successListener = transactionSuccessListenerMap.get(transaction);
                         SocketClient.FailureListener failureListener = transactionFailureListenerMap.get(transaction);
+
                         client.send(transaction, () -> {
                             if (successListener != null)
                                 successListener.onSuccess();
@@ -157,7 +160,7 @@ public enum MOBClient implements LoggingCallback {
      * Get whether the connection is running.
      */
     public boolean isRunning() {
-        return connecting.get() || (socket != null && socket.isConnected());
+        return connecting.get() || (socket != null && socket.isClosed());
     }
 
     /**
@@ -267,9 +270,13 @@ public enum MOBClient implements LoggingCallback {
                 });
             }).start();
         } else {
+            //TODO check if this is right
             transactionQueue.add(transaction);
-            transactionSuccessListenerMap.put(transaction, successListener);
-            transactionFailureListenerMap.put(transaction, failureListener);
+            if (successListener != null)
+                transactionSuccessListenerMap.put(transaction, successListener);
+            if (failureListener != null)
+                transactionFailureListenerMap.put(transaction, failureListener);
+
         }
     }
 
