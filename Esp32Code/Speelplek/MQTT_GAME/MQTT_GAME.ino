@@ -15,10 +15,11 @@ const int MQTT_PORT = 1883;
 const char *MQTT_USERNAME = "androidTI";
 const char *MQTT_PASSWORD = "&FN+g$$Qhm7j";
 
+const char *MAC = "2C-6F-C9-54-B0-0C";
+
 // Definieer de MQTT topics
-const char *MQTT_TOPIC_LCD = "groep/a3/device/2C-6F-C9-54-B0-0C";
-const char *MQTT_TOPIC_BUTTON1 = "Demo/Hans/Btn1";
-const char *MQTT_TOPIC_BUTTON2 = "Demo/Hans/Btn2";
+const char *MQTT_CONNECT_TOPIC = "groep/a3/connect";
+const char *MQTT_DEVICE_TOPIC = "groep/a3/device/";
 
 // Definieer de te gebruiken Quality of Service (QoS)
 const int MQTT_QOS = 0;
@@ -276,7 +277,7 @@ void handleFinishState() {
     lcd.setCursor(0, 1);
     lcd.print("Blue: " + String(blueWins));
 
-    mqttClient.publish(MQTT_TOPIC_LCD, (String("finish:") + String(redWins) + String(":") + String(blueWins)).c_str());
+    mqttClient.publish((String(MQTT_DEVICE_TOPIC) + String(MAC)).c_str(), (String("finish:") + String(redWins) + String(":") + String(blueWins)).c_str());
 
     delay(2000);
     setState(IDLE);
@@ -309,22 +310,15 @@ void connectToMqtt() {
     }
 
     // Subscribe op de LCD topic
-    if (!mqttClient.subscribe(MQTT_TOPIC_LCD, MQTT_QOS)) {
+    if (!mqttClient.subscribe((String(MQTT_DEVICE_TOPIC) + String(MAC)).c_str(), MQTT_QOS)) {
         Serial.print("Failed to subscribe to topic ");
-        Serial.println(MQTT_TOPIC_LCD);
+        Serial.println((String(MQTT_DEVICE_TOPIC) + String(MAC)).c_str());
     } else {
         Serial.print("Subscribed to topic ");
-        Serial.println(MQTT_TOPIC_LCD);
+        Serial.println((String(MQTT_DEVICE_TOPIC) + String(MAC)).c_str());
     }
 
-    // Publish to topic
-    if (!mqttClient.publish(MQTT_TOPIC_LCD, "connected")) {
-        Serial.print("Failed to publish");
-        Serial.println(MQTT_TOPIC_LCD);
-    } else {
-        Serial.print("Published to topic ");
-        Serial.println(MQTT_TOPIC_LCD);
-    }
+    mqttClient.publish(MQTT_CONNECT_TOPIC, (String("battle:") + String(MAC)).c_str());
 }
 
 void setup() {
