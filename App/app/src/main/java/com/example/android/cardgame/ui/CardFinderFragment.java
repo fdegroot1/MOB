@@ -18,6 +18,7 @@ import com.example.android.cardgame.R;
 import com.example.android.cardgame.SavedCardSettings;
 
 import mob.app.networking.MOBClient;
+import mob.sdk.cards.CardRepository;
 import mob.sdk.networking.payloads.CardRequest;
 import mob.sdk.networking.payloads.CardRequestInvalid;
 import mob.sdk.networking.payloads.CardResult;
@@ -71,7 +72,13 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
         // a card was returned from the server
         String cardId = cardResult.getCardId();
         SavedCardSettings.INSTANCE.saveCard(cardId);
-        //TODO update ui
+        String name = CardRepository.INSTANCE.getCard(cardId).getName();
+
+        if (SavedCardSettings.INSTANCE.loadCards().contains(cardId)) {
+            showDialog("You already have the card " + name + "!");
+        } else {
+            showDialog("You received a new card: " + name + ". Go to your catalogue to see it!");
+        }
 
 
     }
@@ -82,7 +89,7 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
 
         String cardCode = mTestCardField.getText().toString();
         if (cardCode.length() == 0) {
-            showToast(R.string.card_no_code,Toast.LENGTH_SHORT);
+            showToast(R.string.card_no_code, Toast.LENGTH_SHORT);
             return;
         }
 
@@ -91,12 +98,12 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
                 () -> {
                     Log.d(getClass().getSimpleName(), "Success");
                     // Card request sent successfully!
-                    showToast(R.string.card_request_sent,Toast.LENGTH_SHORT);
+                    showToast(R.string.card_request_sent, Toast.LENGTH_SHORT);
                 },
                 () -> {
                     Log.d(getClass().getSimpleName(), "Failure");
                     // Card request failed!
-                    showToast(R.string.card_request_failed,Toast.LENGTH_SHORT);
+                    showToast(R.string.card_request_failed, Toast.LENGTH_SHORT);
                 });
     }
 
