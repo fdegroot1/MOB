@@ -32,7 +32,6 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
     private EditText mTableIdEditText;
     private BattleRequest.Color mTeamColor;
     // TODO set card that will be claimed
-    private String mCardId;
     private Context mContext;
 
     @Override
@@ -105,16 +104,6 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
             showToast(R.string.battle_request_sent_toast,Toast.LENGTH_SHORT);
             // @todo update UI
         });
-    }
-
-    /**
-     * Claim a card that is won
-     */
-    public void claimCard() {
-        if (mCardId == null)
-            return;
-
-        // @todo start card claimed activity
     }
 
     @Override
