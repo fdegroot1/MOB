@@ -79,8 +79,6 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
             SavedCardSettings.INSTANCE.saveCard(cardId);
             showDialog("You received a new card: " + name + ". Go to your catalogue to see it!");
         }
-
-
     }
 
     public void sendCardRequest() {
