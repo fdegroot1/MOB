@@ -1,7 +1,31 @@
 <resources>
-    <string name="app_name">Card Game</string>
+    <string name="app_name">Essteling</string>
+    <string name="card_finder_text">Throughout the entire park, cards are hidden in stations. Find these cards by paying close attention to sounds and lights. When you have found a card station, you can see how many cards are left. If there are any cards left, enter the shown code below to receive a card!</string>
+    <string name="card_number_text">Enter card code!</string>
+    <string name="catalogue_button">Catalogue</string>
+    <string name="cardfinder_button">Cardfinder</string>
+    <string name="battle_button">Battle</string>
+    <string name="receive_kaart">Collect card!</string>
+    <string name="table_input">Enter table number</string>
+    <string name="connect">Connect</string>
+    <string name="team_select">Are you in team Blue or Red?</string>
+    <string name="opponent_ready">Your opponent is ready and waiting!</string>
+    <string name="begin">Start!</string>
+    <string name="card_front">Frontside</string>
+    <string name="card_back">Backside</string>
+    <string name="card_name">Parfoes de Tovernar</string>
+    <string name="card_class">Schildkaart</string>
     <string name="title_activity_fragment">activity_fragment</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_won_activity">You Won!</string>
+    <string name="textview_won_activity">You have won 5 rounds more than your opponent. As a reward you can receive a card!</string>
+    <string name="buttontext_won_activity">Receive card</string>
+    <string name="gamerules">The gamerules</string>
+    <string name="options">Options</string>
+    <string name="options1">Option 1</string>
+    <string name="options2">Option 2</string>
+    <string name="options3">Option 3</string>
+    <string name="options4">Option 4</string>
 </resources>
