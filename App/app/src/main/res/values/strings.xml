@@ -22,11 +22,6 @@
     <string name="title_won_activity">You Won!</string>
     <string name="textview_won_activity">You have won 5 rounds more than your opponent. As a reward you can receive a card!</string>
     <string name="buttontext_won_activity">Receive card</string>
-    <string name="options">Options</string>
-    <string name="options1">Option 1</string>
-    <string name="options2">Option 2</string>
-    <string name="options3">Option 3</string>
-    <string name="options4">Option 4</string>
     <string name="no_id_toast">Please enter a table id!</string>
     <string name="battle_request_sent_toast">Battle request sent!</string>
     <string name="no_color_toast">Please select a color!</string>
@@ -37,8 +32,6 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tristique enim mi, non euismod sem gravida ut. Nunc sagittis enim nec nibh mattis mattis. Nullam fermentum nisi libero, in finibus nunc consectetur eget. Sed ullamcorper pretium sodales. Suspendisse ut mattis quam, tristique iaculis purus. Suspendisse eu turpis diam. Quisque vulputate nunc felis, id porta ante bibendum eu. Quisque non libero tincidunt, fermentum diam et, eleifend elit. Vestibulum sed est quis enim egestas consequat. Integer quis lobortis turpis. Praesent pellentesque, lectus ut pulvinar dictum, dui ex ullamcorper tortor, quis laoreet ex purus et nulla. Proin at mattis ex. Suspendisse eu est felis. Donec quis tortor at massa viverra interdum. Nunc lobortis mollis diam sed eleifend. Maecenas hendrerit tincidunt viverra. Donec maximus aliquet eros, in tincidunt purus vulputate ut. Vestibulum ut eros vehicula, pharetra ipsum at, dictum est. Nullam viverra eu lectus finibus mattis. Nullam non eros arcu. Morbi in elit nibh. Pellentesque tempor orci metus. Ut quis auctor massa, et eleifend nisi. Donec suscipit at erat nec bibendum. Fusce sed mi id magna accumsan convallis. Aenean maximus erat quis tortor egestas, sit amet pellentesque urna condimentum. Duis a sagittis nunc. </string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
@@ -57,4 +50,5 @@
     <string name="your_card_collection">Your card collection</string>
     <string name="new_card_received">You received a new card: </string>
     <string name="card_already_got">You already have the card </string>
+    <string name="options">Options</string>
 </resources>
