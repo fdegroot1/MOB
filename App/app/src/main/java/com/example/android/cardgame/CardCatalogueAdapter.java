@@ -41,7 +41,11 @@ public class CardCatalogueAdapter extends RecyclerView.Adapter<CardCatalogueAdap
         String cardId = mCardIdList.get(position);
         Card card = CardRepository.INSTANCE.getCard(cardId);
         holder.mTitleTextView.setText(card.getName());
-//        holder.mImageView.setImageResource(R.drawable.);
+        try {
+            String imageId = cardId.replaceAll("-", "");
+
+            holder.mImageView.setImageResource(R.drawable.class.getField(imageId).getInt(null));
+        } catch (Exception e) { }
     }
 
     @Override

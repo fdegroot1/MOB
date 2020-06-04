@@ -62,6 +62,13 @@ public class CardDetailActivity extends AppCompatActivity {
         ImageView image = findViewById(R.id.cardImage);
 
         title.setText(card.getName());
+        description.setText(R.string.lorem);
+
+        try {
+            String imageId = cardId.replaceAll("-", "");
+
+            image.setImageResource(R.drawable.class.getField(imageId).getInt(null));
+        } catch (Exception e) { }
     }
 
     private void displayFront() {
