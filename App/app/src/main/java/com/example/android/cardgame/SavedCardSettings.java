@@ -53,9 +53,6 @@ public enum SavedCardSettings {
             }
         }
 
-        if (cards.size() == 0)
-            Toast.makeText(context, "You have no cards yet", Toast.LENGTH_SHORT).show();
-
         Log.d(TAG, "loadCards: " + cards);
 
         return cards;
@@ -75,4 +72,6 @@ public enum SavedCardSettings {
     public void setContext(Context context) {
         this.context = context;
     }
+
+
 }
