@@ -22,16 +22,15 @@
     <string name="title_won_activity">You Won!</string>
     <string name="textview_won_activity">You have won 5 rounds more than your opponent. As a reward you can receive a card!</string>
     <string name="buttontext_won_activity">Receive card</string>
-    <string name="gamerules">The gamerules</string>
     <string name="options">Options</string>
     <string name="options1">Option 1</string>
     <string name="options2">Option 2</string>
     <string name="options3">Option 3</string>
     <string name="options4">Option 4</string>
-    <string name="no_id_toast">Please enter a table id!</string>
-    <string name="battle_request_sent_toast">Battle request sent successfully! Continue on the table!</string>
-    <string name="no_color_toast">Please select a color!</string>
-    <string name="battle_already_playing_toast">This table is already playing!</string>
-    <string name="battle_device_id_wrong_toast">Device id is wrong!</string>
-    <string name="battle_team_taken">Team is already taken!</string>
+    <string name="purpose_expl">The purpose of this app is to entertain people on their way to a different attraction. With this app you can collect different kinds of cards each with a fun interesting fact on the back.</string>
+    <string name="purpose">Purpose</string>
+    <string name="how_to_collect_card">How to collect cards</string>
+    <string name="how_to_collect_card_expl">You can collect cards by redeeming a code you can find at a collection station. These stations are all around the Essteling. You can enter the code and after that if you click redeem you should see a card popup on your screen. You can also get a card by winning against someon at a battle station.</string>
+    <string name="how_to_battle">How to battle</string>
+    <string name="how_to_battle_expl">When you come across a battle station and you want to battle you can fill in the number of the battle station click  on a color and after that click on the connect button. When someon else also connect to this station you can battle with him/her. The battle works by clicking on a button on the battle station this button corresponds to a card in your app. The battle is like rock paper scissors each card has a type SWORD beats BOW, BOW beats SHIELD and SHIELD beats SWORD.</string>
 </resources>
