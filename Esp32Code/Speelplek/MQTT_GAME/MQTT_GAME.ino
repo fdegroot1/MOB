@@ -114,6 +114,12 @@ void setState(GameState state) {
             lcd.setCursor(0, 0);
             lcd.print("Beschikbaar");
             break;
+        case CHOOSE:
+            lcd.clear();
+            lcd.setCursor(0, 0);
+            lcd.print("Red:" + String(cardStrings[redChoice]));
+            lcd.setCursor(0, 1);
+            lcd.print("Blue:" + String(cardStrings[blueChoice]));
     }
 }
 
