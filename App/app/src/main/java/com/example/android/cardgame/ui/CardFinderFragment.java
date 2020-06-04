@@ -1,5 +1,8 @@
 package com.example.android.cardgame.ui;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -7,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -57,7 +61,8 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
     public void onCardRequestInvalid(CardRequestInvalid cardRequestInvalid) {
         // a requested cards code was invalid
         String wrongCode = cardRequestInvalid.getCardCode();
-        // TODO update ui
+
+        showDialog("Code " + wrongCode + " is wrong!");
 
     }
 
@@ -76,18 +81,70 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
         // TODO get card code from ui and replace "test" with
 
         String cardCode = mTestCardField.getText().toString();
+        if (cardCode.length() == 0) {
+            showToast(R.string.card_no_code,Toast.LENGTH_SHORT);
+            return;
+        }
 
         MOBClient.INSTANCE.start();
         MOBClient.INSTANCE.sendCardRequest(new CardRequest(cardCode),
                 () -> {
                     Log.d(getClass().getSimpleName(), "Success");
                     // Card request sent successfully!
-                    //TODO update ui
+                    showToast(R.string.card_request_sent,Toast.LENGTH_SHORT);
                 },
                 () -> {
                     Log.d(getClass().getSimpleName(), "Failure");
                     // Card request failed!
-                    //TODO update ui
+                    showToast(R.string.card_request_failed,Toast.LENGTH_SHORT);
                 });
+    }
+
+    private void showDialog(String message) {
+        getActivity().runOnUiThread(() -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
+            builder.setTitle(message);
+            builder.setCancelable(true);
+            builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        });
+
+    }
+
+    private void showDialog(int message) {
+        getActivity().runOnUiThread(() -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
+            builder.setTitle(message);
+            builder.setCancelable(true);
+            builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        });
+    }
+
+    private void showToast(String message, int duration) {
+        getActivity().runOnUiThread(() -> {
+            Toast.makeText(this.getContext(), message, duration).show();
+        });
+
+    }
+
+    private void showToast(int message, int duration) {
+        getActivity().runOnUiThread(() -> {
+            Toast.makeText(this.getContext(), message, duration).show();
+        });
     }
 }
