@@ -12,7 +12,6 @@ import com.example.android.cardgame.R;
 import com.example.android.cardgame.SavedCardSettings;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Set;
 
 import mob.sdk.cards.Card;

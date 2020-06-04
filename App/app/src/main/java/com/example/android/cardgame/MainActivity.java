@@ -4,24 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import mob.sdk.cards.CardRepository;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,12 +46,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void goToCardView(View view) {
-        Intent intent = new Intent(this, CardFinder.class);
-        startActivity(intent);
-
-    }
-
     private void launchOptions() {
         Intent intent = new Intent(getApplicationContext(), OptionsActivity.class);
         startActivity(intent);
@@ -71,6 +54,5 @@ public class MainActivity extends AppCompatActivity {
     private void launchGameRules() {
         Intent intent = new Intent(getApplicationContext(), GamerulesActivity.class);
         startActivity(intent);
-
     }
 }
