@@ -25,35 +25,14 @@ public class CardDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_detail);
 
+        this.mFrontButton = findViewById(R.id.cardFrontButton);
+        this.mBackButton = findViewById(R.id.cardBackButton);
+
         Intent intent = getIntent();
         if (intent != null) {
             String cardId = intent.getStringExtra(EXTRA_CARD_ID);
-
-            Log.d(getClass().getSimpleName(), cardId);
-
-            if (cardId != null && cardId.length() > 0) {
-                Card card = CardRepository.INSTANCE.getCard(cardId);
-
-                if (card != null) {
-                    getSupportActionBar().setTitle(card.getName());
-
-                    TextView title = findViewById(R.id.cardTitleDetail);
-                    TextView description = findViewById(R.id.cardTitleDetail);
-                    ImageView image = findViewById(R.id.cardImage);
-
-                    title.setText(card.getName());
-                    title.setVisibility(View.INVISIBLE);
-
-                    description.setVisibility(View.VISIBLE);
-                } else {
-                    Log.d(getClass().getSimpleName(), "Card was null");
-                }
-            }
+            setCard(cardId);
         }
-
-        setContentView(R.layout.activity_card_detail);
-        this.mFrontButton = findViewById(R.id.cardFrontButton);
-        this.mBackButton = findViewById(R.id.cardBackButton);
 
         mFrontButton.setOnClickListener(v -> {
             displayFront();
@@ -62,6 +41,27 @@ public class CardDetailActivity extends AppCompatActivity {
         mBackButton.setOnClickListener(v -> {
             displayBack();
         });
+    }
+
+    private void setCard(String cardId) {
+        Log.d(getClass().getSimpleName(), cardId);
+
+        if (cardId == null || cardId.length() == 0)
+            return;
+
+        Card card = CardRepository.INSTANCE.getCard(cardId);
+
+        if (card == null)
+            return;
+
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setTitle(card.getName());
+
+        TextView title = findViewById(R.id.cardTitleDetail);
+        TextView description = findViewById(R.id.cardDescription);
+        ImageView image = findViewById(R.id.cardImage);
+
+        title.setText(card.getName());
     }
 
     private void displayFront() {
