@@ -15,7 +15,7 @@ const int MQTT_PORT = 1883;
 const char *MQTT_USERNAME = "androidTI";
 const char *MQTT_PASSWORD = "&FN+g$$Qhm7j";
 
-const char *MAC = "2C-6F-C9-54-B0-0C";
+const char *MAC = "tafel1";
 
 // Definieer de MQTT topics
 const char *MQTT_CONNECT_TOPIC = "groep/a3/connect";
