@@ -47,12 +47,13 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_battle, container, false);
         ImageButton red = (ImageButton) view.findViewById(R.id.red_team);
+        ImageButton blue = (ImageButton) view.findViewById(R.id.blue_team);
 
         red.setOnClickListener(e -> {
-
+            red.setImageDrawable(getResources().getDrawable(R.drawable.card_stroke,null));
             setColorRed();
         });
-        ((ImageButton) view.findViewById(R.id.blue_team)).setOnClickListener(e -> {
+        blue.setOnClickListener(e -> {
             setColorBlue();
         });
         ((Button)view.findViewById(R.id.battle_start_button)).setOnClickListener(e -> sendBattleRequest());

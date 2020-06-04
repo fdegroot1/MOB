@@ -11,7 +11,6 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:hint="@string/table_input"
-        android:inputType="number"
         android:paddingEnd="56dp"
         android:paddingRight="56dp"
         android:textSize="20dp"
