@@ -8,30 +8,17 @@
         android:id="@+id/table_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
-        android:paddingRight="56dp"
-        android:inputType="number"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/button_connect"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:hint="@string/table_input"
-        android:textSize="20dp"
-        android:layout_marginStart="8dp"
-        android:paddingEnd="56dp" />
-
-    <Button
-        android:id="@+id/button_connect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
-        android:text="@string/connect"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/table_input"
-        app:layout_constraintRight_toRightOf="parent"
-        android:textSize="20sp"
-        android:layout_marginEnd="8dp" />
+        android:hint="@string/table_input"
+        android:inputType="number"
+        android:paddingEnd="56dp"
+        android:paddingRight="56dp"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/team_select_text"
@@ -78,6 +65,7 @@
         app:layout_constraintRight_toRightOf="parent"/>
 
     <Button
+        android:id="@+id/battle_start_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"

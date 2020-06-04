@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -41,13 +42,10 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_battle, container, false);
 
-        ImageButton redButton = (ImageButton) view.findViewById(R.id.red_team);
-        ImageButton blueButton = (ImageButton) view.findViewById(R.id.blue_team);
-
-        redButton.setOnClickListener(e -> setColorRed());
-        blueButton.setOnClickListener(e -> setColorBlue());
-
-        // @todo set mTableIdEditText
+        ((ImageButton) view.findViewById(R.id.red_team)).setOnClickListener(e -> setColorRed());;
+        ((ImageButton) view.findViewById(R.id.blue_team)).setOnClickListener(e -> setColorBlue());;
+        ((Button)view.findViewById(R.id.battle_start_button)).setOnClickListener(e -> sendBattleRequest());
+        this.mTableIdEditText = (EditText) view.findViewById(R.id.table_input);
 
         return view;
     }
@@ -72,14 +70,22 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
     public void sendBattleRequest() {
         String tableId = mTableIdEditText.getText().toString();
 
-        if (tableId.length() == 0 || mTeamColor == null)
+        if (tableId.length() == 0) {
+            Toast.makeText(this.getContext(), R.string.no_id_toast, Toast.LENGTH_SHORT).show();
             return;
+        }
+
+        if (mTeamColor == null) {
+            Toast.makeText(this.getContext(),R.string.no_color_toast,Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         BattleRequest battleRequest = new BattleRequest(tableId, mTeamColor);
 
         MOBClient.INSTANCE.start();
         MOBClient.INSTANCE.sendBattleRequest(battleRequest, () -> {
             // battle request send!
+            Toast.makeText(this.getContext(),R.string.battle_request_sent_toast,Toast.LENGTH_LONG).show();
             // @todo update UI
         });
     }

@@ -5,6 +5,7 @@ import android.util.Log;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -28,8 +29,8 @@ public enum MOBClient implements LoggingCallback {
 
     private final AtomicBoolean connecting = new AtomicBoolean(false);
     private final Queue<Transaction> transactionQueue = new ConcurrentLinkedQueue<>();
-    private final Map<Transaction, SocketClient.SuccessListener> transactionSuccessListenerMap = new ConcurrentHashMap<>();
-    private final Map<Transaction, SocketClient.FailureListener> transactionFailureListenerMap = new ConcurrentHashMap<>();
+    private final Map<Transaction, Optional<SocketClient.SuccessListener>> transactionSuccessListenerMap = new ConcurrentHashMap<>();
+    private final Map<Transaction, Optional<SocketClient.FailureListener>> transactionFailureListenerMap = new ConcurrentHashMap<>();
 
     private Socket socket;
     private SocketClient client;
@@ -102,8 +103,13 @@ public enum MOBClient implements LoggingCallback {
 
                     while (transactionQueue.size() > 0) {
                         Transaction transaction = transactionQueue.peek();
-                        SocketClient.SuccessListener successListener = transactionSuccessListenerMap.get(transaction);
-                        SocketClient.FailureListener failureListener = transactionFailureListenerMap.get(transaction);
+                        if (transaction == null) continue;
+                        //TODO check if this is right
+                        Optional<SocketClient.SuccessListener> optionalSuccessListener = transactionSuccessListenerMap.get(transaction);
+                        Optional<SocketClient.FailureListener> optionalFailureListener = transactionFailureListenerMap.get(transaction);
+                        SocketClient.SuccessListener successListener = optionalSuccessListener.orElse(null);
+                        SocketClient.FailureListener failureListener = optionalFailureListener.orElse(null);
+
                         client.send(transaction, () -> {
                             if (successListener != null)
                                 successListener.onSuccess();
@@ -262,14 +268,17 @@ public enum MOBClient implements LoggingCallback {
                     if (failureListener != null)
                         failureListener.onFailure();
                     transactionQueue.add(transaction);
-                    transactionSuccessListenerMap.put(transaction, successListener);
-                    transactionFailureListenerMap.put(transaction, failureListener);
+                    transactionSuccessListenerMap.put(transaction, Optional.of(successListener));
+                    transactionFailureListenerMap.put(transaction, Optional.of(failureListener));
                 });
             }).start();
         } else {
-            transactionQueue.add(transaction);
-            transactionSuccessListenerMap.put(transaction, successListener);
-            transactionFailureListenerMap.put(transaction, failureListener);
+            if (failureListener != null) {
+                //TODO check if this is right
+                transactionQueue.add(transaction);
+                transactionSuccessListenerMap.put(transaction, Optional.of(successListener));
+                transactionFailureListenerMap.put(transaction, Optional.of(failureListener));
+            }
         }
     }
 
