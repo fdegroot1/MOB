@@ -71,12 +71,12 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
     public void onCardResult(CardResult cardResult) {
         // a card was returned from the server
         String cardId = cardResult.getCardId();
-        SavedCardSettings.INSTANCE.saveCard(cardId);
         String name = CardRepository.INSTANCE.getCard(cardId).getName();
 
         if (SavedCardSettings.INSTANCE.loadCards().contains(cardId)) {
             showDialog("You already have the card " + name + "!");
         } else {
+            SavedCardSettings.INSTANCE.saveCard(cardId);
             showDialog("You received a new card: " + name + ". Go to your catalogue to see it!");
         }
 
