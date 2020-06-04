@@ -348,6 +348,8 @@ void setup() {
     lcd.init();
     lcd.backlight();
     lcd.clear();
+
+    setState(IDLE);
 }
 
 void loop() {
