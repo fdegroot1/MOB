@@ -48,7 +48,7 @@
     <string name="cardBackButton">Back</string>
     <string name="resetButton">Reset</string>
     <string name="your_card_collection">Your card collection</string>
-    <string name="new_card_received">You received a new card: </string>
-    <string name="card_already_got">You already have the card </string>
+    <string name="new_card_received">You received a new card:</string>
+    <string name="card_already_got">You already have the card:</string>
     <string name="options">Options</string>
 </resources>
