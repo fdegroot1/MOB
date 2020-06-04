@@ -51,4 +51,10 @@
     <string name="new_card_received">You received a new card:</string>
     <string name="card_already_got">You already have the card:</string>
     <string name="options">Options</string>
+    <string name="battle_result_won">You won!</string>
+    <string name="battle_result_lost">You lost!</string>
+    <string name="won">Won</string>
+    <string name="lost">Lost</string>
+    <string name="draw">It was a draw!</string>
+
 </resources>
