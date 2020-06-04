@@ -105,6 +105,18 @@ Button redConfirmButton = Button(buttonPin2);
 Button blueChoiceButton = Button(buttonPin3);
 Button blueConfirmButton = Button(buttonPin4);
 
+void setState(GameState state) {
+    Serial.println("Setting game state to: " + gameStateText[state]);
+    gameState = state;
+    switch (state) {
+        case IDLE:
+            lcd.clear();
+            lcd.setCursor(0, 0);
+            lcd.print("Beschikbaar");
+            break;
+    }
+}
+
 void mqttCallback(char *topic, byte *payload, unsigned int length) {
     // Logging
     Serial.print("MQTT callback called for topic ");
@@ -139,18 +151,6 @@ void mqttCallback(char *topic, byte *payload, unsigned int length) {
         blueConfirmButton.reset();
 
         setState(CHOOSING);
-    }
-}
-
-void setState(GameState state) {
-    Serial.println("Setting game state to: " + gameStateText[state]);
-    gameState = state;
-    switch (state) {
-        case IDLE:
-            lcd.clear();
-            lcd.setCursor(0, 0);
-            lcd.print("Beschikbaar");
-            break;
     }
 }
 
