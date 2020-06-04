@@ -115,6 +115,9 @@ void setState(GameState state) {
             lcd.print("Beschikbaar");
             break;
         case CHOOSE:
+            redChoice = 0;
+            blueChoice = 0;
+
             lcd.clear();
             lcd.setCursor(0, 0);
             lcd.print("Red:" + String(cardStrings[redChoice]));
