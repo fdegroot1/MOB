@@ -171,11 +171,11 @@ int compareCards(CardType card1, CardType card2) {
     } else if (card1 == BOW && card2 == SHIELD) {
         return 1;
     } else if (card2 == SWORD && card1 == BOW) {
-        return 1;
+        return -1;
     } else if (card2 == SHIELD && card1 == SWORD) {
-        return 1;
+        return -1;
     } else if (card2 == BOW && card1 == SHIELD) {
-        return 1;
+        return -1;
     }
 
     return 0;
