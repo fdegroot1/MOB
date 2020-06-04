@@ -102,6 +102,7 @@ int blueWins = 0;
 int currentRound = 0;
 
 unsigned long elapsedTime = 0;
+unsigned long currentTime;
 
 Button redChoiceButton = Button(buttonPin1);
 Button redConfirmButton = Button(buttonPin2);
@@ -120,7 +121,7 @@ void setState(GameState state) {
         case CHOOSING:
             redChoice = 0;
             blueChoice = 0;
-
+          
             lcd.clear();
             lcd.setCursor(0, 0);
             lcd.print("Red:" + String(cardStrings[redChoice]));
@@ -156,12 +157,10 @@ void mqttCallback(char *topic, byte *payload, unsigned int length) {
         redChoice = 0;
         redChoiceButton.reset();
         redConfirmButton.reset();
-
         blueWins = 0;
         blueChoice = 0;
         blueChoiceButton.reset();
         blueConfirmButton.reset();
-
         setState(CHOOSING);
     }
 }
@@ -189,9 +188,12 @@ void handleIdleState() {
 }
 
 void handleChoosingState() {
-    unsigned long currentTime = millis();
+    currentTime = millis();
+    Serial.println("c: " + String(currentTime));
+    Serial.println("e: " + String(elapsedTime));
+    Serial.println("c-e: " + String(currentTime - elapsedTime));
 
-   if((unsigned long)currentTime - elapsedTime <= 90000){
+//   if((unsigned long)currentTime - elapsedTime <= 30000){
   
     redChoiceButton.read();
     redConfirmButton.read();
@@ -238,15 +240,15 @@ void handleChoosingState() {
         lcd.print("Red:" + String(cardStrings[redChoice]));
         lcd.setCursor(0, 1);
         lcd.print("Blue:" + String(cardStrings[blueChoice]));
+        elapsedTime = currentTime;
     }
 
     if (confirmations == 2) {
         setState(RESULT);
     }
-   }else{
-    elapsedTime = currentTime;
-    setState(ABORT);
-   }
+//   }else{
+//    setState(ABORT);
+//   }
 }
 
 void handleAbortState(){
