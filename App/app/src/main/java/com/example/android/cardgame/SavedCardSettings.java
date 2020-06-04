@@ -5,25 +5,29 @@ import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public enum SavedCardSettings {
     INSTANCE;
 
     private static final String TAG = "SavedCardSettings";
 
-    private final Set<String> cards = new HashSet<>();
+    private final List<String> cards = new ArrayList<>();
     public final String CARD_IDS = "cardIDs";
 
     private Context context;
 
     public void saveCard(String cardId) {
+        if (cards.contains(cardId)) {
+            return;
+        }
+
         SharedPreferences.Editor editor = context.getSharedPreferences(CARD_IDS, 0).edit();
 
         cards.add(cardId);
 
-        editor.putStringSet(CARD_IDS, cards);
+        editor.putString(CARD_IDS, cards.toString());
         editor.commit();
 
         Log.d(getClass().getSimpleName(), String.format("Card: %s saved on device", cardId));
@@ -35,12 +39,19 @@ public enum SavedCardSettings {
         }
     }
 
-    public Set<String> loadCards() {
+    public List<String> loadCards() {
         SharedPreferences sharedPreferences = context.getSharedPreferences(CARD_IDS, 0);
-        Set<String> cardIds = sharedPreferences.getStringSet(CARD_IDS, new HashSet<>());
+        String cardIds = sharedPreferences.getString(CARD_IDS, "[]");
 
-        if (cardIds != null)
-            cards.addAll(cardIds);
+        if (!cardIds.equals("[]")) {
+            cardIds = cardIds.substring(1, cardIds.length() - 1);
+            for (String cardId : cardIds.split(",")) {
+                cardId = cardId.trim();
+
+                if (!cards.contains(cardId))
+                    cards.add(cardId);
+            }
+        }
 
         if (cards.size() == 0)
             Toast.makeText(context, "You have no cards yet", Toast.LENGTH_SHORT).show();
