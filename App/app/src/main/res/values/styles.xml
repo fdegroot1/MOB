@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Green Tint application theme. -->
-    <style name="GreeTint" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="GreenTint" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
 
         <!-- Action Bor Color -->

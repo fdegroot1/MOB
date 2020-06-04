@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/GreeTint">
+        android:theme="@style/GreenTint">
         <activity android:name=".GamerulesActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
