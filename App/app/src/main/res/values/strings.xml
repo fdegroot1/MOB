@@ -28,7 +28,7 @@
     <string name="options3">Option 3</string>
     <string name="options4">Option 4</string>
     <string name="no_id_toast">Please enter a table id!</string>
-    <string name="battle_request_sent_toast">Battle request sent successfully! Continue on the table!</string>
+    <string name="battle_request_sent_toast">Battle request sent!</string>
     <string name="no_color_toast">Please select a color!</string>
     <string name="battle_already_playing_toast">This table is already playing!</string>
     <string name="battle_device_id_wrong_toast">Device id is wrong!</string>
