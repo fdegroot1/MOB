@@ -256,7 +256,7 @@ void handleResultState() {
         lcd.print("It's a draw!");
     }
 
-    delay(500);
+    delay(2000);
 
     currentRound++;
 
@@ -268,7 +268,7 @@ void handleFinishState() {
     lcd.setCursor(0, 0);
     lcd.print("Game finish");
 
-    delay(500);
+    delay(2000);
 
     lcd.clear();
     lcd.setCursor(0, 0);
@@ -278,7 +278,7 @@ void handleFinishState() {
 
     mqttClient.publish(MQTT_TOPIC_LCD, (String("finish:") + String(redWins) + String(":") + String(blueWins)).c_str());
 
-    delay(500);
+    delay(2000);
     setState(IDLE);
 }
 
@@ -289,7 +289,7 @@ void connectToWiFi() {
     Serial.println(WLAN_SSID);
     WiFi.begin(WLAN_SSID, WLAN_ACCESS_KEY);
     while (WiFi.status() != WL_CONNECTED) {
-        delay(500);
+        delay(2000);
         Serial.print(".");
     }
     Serial.println("WiFi connected");
