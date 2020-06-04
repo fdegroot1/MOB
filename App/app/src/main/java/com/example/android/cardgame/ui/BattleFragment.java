@@ -18,7 +18,6 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.android.cardgame.R;
-import com.example.android.cardgame.SavedCardSettings;
 
 import java.util.Objects;
 
@@ -48,6 +47,7 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
         View view =  inflater.inflate(R.layout.fragment_battle, container, false);
         ImageButton red = (ImageButton) view.findViewById(R.id.red_team);
         ImageButton blue = (ImageButton) view.findViewById(R.id.blue_team);
+
 
         red.setOnClickListener(e -> {
             red.setImageDrawable(getResources().getDrawable(R.drawable.red_placeholder_selected,null));

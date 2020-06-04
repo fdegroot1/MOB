@@ -160,7 +160,7 @@ public enum MOBClient implements LoggingCallback {
      * Get whether the connection is running.
      */
     public boolean isRunning() {
-        return connecting.get() || (socket != null && socket.isConnected());
+        return connecting.get() || (socket != null && socket.isClosed());
     }
 
     /**
