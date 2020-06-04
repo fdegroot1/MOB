@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Essteling</string>
-    <string name="app_name">Essteling</string>
     <string name="card_finder_text">" In het hele park zijn kaarten verborgen in stations. Vind deze kaarten door goed op geluiden en lichten te letten. Als je een kaartstation hebt gevonden, verschijnt er een display met het aantal resterende kaarten en een display met een code. Voer de code in die u op het onderstaande scherm ziet en u krijgt uw kaart!"</string>
     <string name="card_number_text">Vul kaart code in!</string>
     <string name="catalogue_button">Catalogus</string>
@@ -22,18 +21,12 @@
     <string name="textview_won_activity">" Je hebt 5 rondes meer gewonnen dan je tegenstander. Als beloning kun je een kaart krijgen!"</string>
     <string name="buttontext_won_activity">Kaart verzamelen</string>
     <string name="options">Opties</string>
-    <string name="options1">Optie 1</string>
-    <string name="options2">Optie 2</string>
-    <string name="options3">Optie 3</string>
-    <string name="options4">Optie 4</string>
     <string name="no_id_toast">Vul alstublieft tafelnummer in!</string>
     <string name="battle_request_sent_toast">Gevechts verzoek verstuurd</string>
     <string name="no_color_toast">Kies een kleur!</string>
     <string name="battle_already_playing_toast">Deze tafel is al aan het spelen!</string>
     <string name="battle_device_id_wrong_toast">Verkeerde id</string>
     <string name="battle_team_taken">Team is al gekozen!</string>
-    <string name="next">Volgende</string>
-    <string name="previous">Vorige</string>
     <string name="purpose_expl">" Het doel van deze app is om mensen te vermaken op weg naar een andere attractie. Met deze app kun je verschillende soorten kaarten verzamelen, elk met een leuk interessant feitje op de achterkant."</string>
     <string name="purpose">Doel</string>
     <string name="how_to_collect_card">Hoe verzamel je kaarten</string>
