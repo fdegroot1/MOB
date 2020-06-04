@@ -132,6 +132,7 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
 
     @Override
     public void onBattleResult(BattleResult battleResult) {
+        //TODO add card to win
 
         if (battleResult.hasWon()) {
             showDialog(getResources().getString(R.string.battle_result_won) + " " + getResources().getString(R.string.won) + ": " + battleResult.getAmountWon()

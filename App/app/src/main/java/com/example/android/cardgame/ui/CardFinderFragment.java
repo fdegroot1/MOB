@@ -67,7 +67,7 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
         // a requested cards code was invalid
         String wrongCode = cardRequestInvalid.getCardCode();
 
-        showDialog("Code " + wrongCode + " is wrong!");
+        showDialog("Code " + wrongCode + " " + getResources().getString(R.string.wrong));
     }
 
     @Override
