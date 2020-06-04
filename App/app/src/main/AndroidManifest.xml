@@ -14,7 +14,6 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".CardDetailActivity"
-            android:label="@string/title_activity_card_detail"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme"></activity>
         <activity
@@ -23,10 +22,6 @@
         <activity
             android:name=".OptionsActivity"
             android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".CardFinder"
-            android:parentActivityName=".MainActivity" />
-
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />

@@ -42,4 +42,9 @@
     <string name="your_card_collection">Jouw kaart collectie</string>
     <string name="new_card_received">Je hebt een nieuwe kaart</string>
     <string name="card_already_got">Je hebt deze kaart al</string>
+    <string name="bottomnav_catalogue">Catalogus</string>
+    <string name="bottomnav_cardfinder">Kaartvinder</string>
+    <string name="bottomnav_battle">Strijden</string>
+    <string name="menu_gamerules">Spelregels</string>
+    <string name="menu_options">Opties</string>
 </resources>

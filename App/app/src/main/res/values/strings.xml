@@ -13,9 +13,6 @@
     <string name="begin">Start!</string>
     <string name="card_front">Frontside</string>
     <string name="card_back">Backside</string>
-    <string name="card_name">Parfoes de Tovernar</string>
-    <string name="card_class">Schildkaart</string>
-    <string name="title_activity_fragment">activity_fragment</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
@@ -28,13 +25,8 @@
     <string name="battle_already_playing_toast">This table is already playing!</string>
     <string name="battle_device_id_wrong_toast">Device id is wrong!</string>
     <string name="battle_team_taken">Team is already taken!</string>
-    <string name="title_activity_card_detail">CardDetailActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tristique enim mi, non euismod sem gravida ut. Nunc sagittis enim nec nibh mattis mattis. Nullam fermentum nisi libero, in finibus nunc consectetur eget. Sed ullamcorper pretium sodales. Suspendisse ut mattis quam, tristique iaculis purus. Suspendisse eu turpis diam. Quisque vulputate nunc felis, id porta ante bibendum eu. Quisque non libero tincidunt, fermentum diam et, eleifend elit. Vestibulum sed est quis enim egestas consequat. Integer quis lobortis turpis. Praesent pellentesque, lectus ut pulvinar dictum, dui ex ullamcorper tortor, quis laoreet ex purus et nulla. Proin at mattis ex. Suspendisse eu est felis. Donec quis tortor at massa viverra interdum. Nunc lobortis mollis diam sed eleifend. Maecenas hendrerit tincidunt viverra. Donec maximus aliquet eros, in tincidunt purus vulputate ut. Vestibulum ut eros vehicula, pharetra ipsum at, dictum est. Nullam viverra eu lectus finibus mattis. Nullam non eros arcu. Morbi in elit nibh. Pellentesque tempor orci metus. Ut quis auctor massa, et eleifend nisi. Donec suscipit at erat nec bibendum. Fusce sed mi id magna accumsan convallis. Aenean maximus erat quis tortor egestas, sit amet pellentesque urna condimentum. Duis a sagittis nunc. </string>
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="lorem" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tristique enim mi, non euismod sem gravida ut. Nunc sagittis enim nec nibh mattis mattis. Nullam fermentum nisi libero, in finibus nunc consectetur eget. Sed ullamcorper pretium sodales. Suspendisse ut mattis quam, tristique iaculis purus. Suspendisse eu turpis diam. Quisque vulputate nunc felis, id porta ante bibendum eu. Quisque non libero tincidunt, fermentum diam et, eleifend elit. Vestibulum sed est quis enim egestas consequat. Integer quis lobortis turpis. Praesent pellentesque, lectus ut pulvinar dictum, dui ex ullamcorper tortor, quis laoreet ex purus et nulla. Proin at mattis ex. Suspendisse eu est felis. Donec quis tortor at massa viverra interdum. Nunc lobortis mollis diam sed eleifend. Maecenas hendrerit tincidunt viverra. Donec maximus aliquet eros, in tincidunt purus vulputate ut. Vestibulum ut eros vehicula, pharetra ipsum at, dictum est. Nullam viverra eu lectus finibus mattis. Nullam non eros arcu. Morbi in elit nibh. Pellentesque tempor orci metus. Ut quis auctor massa, et eleifend nisi. Donec suscipit at erat nec bibendum. Fusce sed mi id magna accumsan convallis. Aenean maximus erat quis tortor egestas, sit amet pellentesque urna condimentum. Duis a sagittis nunc. </string>
     <string name="purpose_expl">The purpose of this app is to entertain people on their way to a different attraction. With this app you can collect different kinds of cards each with a fun interesting fact on the back.</string>
     <string name="purpose">Purpose</string>
     <string name="how_to_collect_card">How to collect cards</string>
@@ -51,4 +43,9 @@
     <string name="new_card_received">You received a new card:</string>
     <string name="card_already_got">You already have the card:</string>
     <string name="options">Options</string>
+    <string name="bottomnav_catalogue">Catalogue</string>
+    <string name="bottomnav_cardfinder">Cardfinder</string>
+    <string name="bottomnav_battle">Battle</string>
+    <string name="menu_gamerules">Gamerules</string>
+    <string name="menu_options">Options</string>
 </resources>
