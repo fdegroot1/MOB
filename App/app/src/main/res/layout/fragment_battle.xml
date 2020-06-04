@@ -12,8 +12,9 @@
             android:id="@+id/table_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:hint="@string/table_input"
             android:paddingEnd="56dp"
             android:paddingRight="56dp"
@@ -28,7 +29,9 @@
             android:id="@+id/team_select_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="24dp"
+            android:layout_marginRight="16dp"
             android:text="@string/team_select"
             android:textSize="20sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -39,34 +42,40 @@
             android:id="@+id/red_team"
             android:layout_width="150dp"
             android:layout_height="150dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="24dp"
-            app:layout_constraintRight_toLeftOf="@id/blue_team"
-            app:layout_constraintTop_toBottomOf="@id/team_select_text"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:scaleType="centerCrop"
             android:src="@drawable/red_placeholder"
-            android:scaleType="centerCrop" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/blue_team"
+            app:layout_constraintTop_toBottomOf="@id/team_select_text" />
 
         <ImageButton
             android:id="@+id/blue_team"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="24dp"
-            app:layout_constraintLeft_toRightOf="@id/red_team"
-            app:layout_constraintTop_toBottomOf="@id/team_select_text"
-            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="16dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/blue_placeholder"
-            android:scaleType="centerCrop" />
+            app:layout_constraintLeft_toRightOf="@id/red_team"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/team_select_text" />
 
         <TextView
             android:id="@+id/opponent_ready"
-            android:layout_width="wrap_content"
+            android:layout_width="331dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
             android:text="@string/opponent_ready"
             android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/red_team"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/red_team" />
 
         <Button
             android:id="@+id/battle_start_button"
