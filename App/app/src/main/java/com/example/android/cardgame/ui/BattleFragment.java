@@ -94,7 +94,6 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
             Toast.makeText(this.getContext(),R.string.no_color_toast,Toast.LENGTH_SHORT).show();
             return;
         }
-        Context context = this.getContext();
 
         BattleRequest battleRequest = new BattleRequest(tableId, mTeamColor);
 
@@ -133,16 +132,15 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
 
     @Override
     public void onBattleResult(BattleResult battleResult) {
-        // battle has finished
-
-        // @todo update UI
 
         if (battleResult.hasWon()) {
-            // @todo update UI
+            showDialog(getResources().getString(R.string.battle_result_won) + " " + getResources().getString(R.string.won) + ": " + battleResult.getAmountWon()
+            + ", " + getResources().getString(R.string.lost) + ": " + battleResult.getAmountLost());
         } else if (battleResult.hasLost()) {
-            // @todo update UI
+            showDialog(getResources().getString(R.string.battle_result_lost) + " " + getResources().getString(R.string.won) + ": " + battleResult.getAmountWon()
+                    + ", " + getResources().getString(R.string.lost) + ": " + battleResult.getAmountLost());
         } else {
-            // @todo update UI
+            showDialog(R.string.draw);
         }
 
         MOBClient.INSTANCE.stop();

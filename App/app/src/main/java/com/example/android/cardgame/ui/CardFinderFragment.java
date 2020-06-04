@@ -86,6 +86,8 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
                 hideKeyboardFrom(this.getContext(), mTestCardField);
             }
         });
+
+        MOBClient.INSTANCE.stop();
     }
 
     public static void hideKeyboardFrom(Context context, View view) {

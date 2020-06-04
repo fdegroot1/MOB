@@ -47,4 +47,9 @@
     <string name="bottomnav_battle">Strijden</string>
     <string name="menu_gamerules">Spelregels</string>
     <string name="menu_options">Opties</string>
+    <string name="battle_result_won">Je hebt gewonnen!</string>
+    <string name="battle_result_lost">Je hebt verloren!</string>
+    <string name="won">Gewonnen</string>
+    <string name="lost">Verloren</string>
+    <string name="draw">Het was gelijkspel!</string>
 </resources>

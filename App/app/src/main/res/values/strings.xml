@@ -48,4 +48,10 @@
     <string name="bottomnav_battle">Battle</string>
     <string name="menu_gamerules">Gamerules</string>
     <string name="menu_options">Options</string>
+    <string name="battle_result_won">You won!</string>
+    <string name="battle_result_lost">You lost!</string>
+    <string name="won">Won</string>
+    <string name="lost">Lost</string>
+    <string name="draw">It was a draw!</string>
+
 </resources>
