@@ -39,7 +39,6 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="purpose_expl">The purpose of this app is to entertain people on their way to a different attraction. With this app you can collect different kinds of cards each with a fun interesting fact on the back.</string>
@@ -48,4 +47,7 @@
     <string name="how_to_collect_card_expl">You can collect cards by redeeming a code you can find at a collection station. These stations are all around the Essteling. You can enter the code and after that if you click redeem you should see a card popup on your screen. You can also get a card by winning against someon at a battle station.</string>
     <string name="how_to_battle">How to battle</string>
     <string name="how_to_battle_expl">When you come across a battle station and you want to battle you can fill in the number of the battle station click  on a color and after that click on the connect button. When someon else also connect to this station you can battle with him/her. The battle works by clicking on a button on the battle station this button corresponds to a card in your app. The battle is like rock paper scissors each card has a type SWORD beats BOW, BOW beats SHIELD and SHIELD beats SWORD.</string>
+    <string name="card_no_code">Please enter a card code!</string>
+    <string name="card_request_sent">Card request sent!</string>
+    <string name="card_request_failed">Card request failed!</string>
 </resources>
