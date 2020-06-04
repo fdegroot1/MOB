@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Essteling</string>
-    <string name="card_finder_text">Throughout the entire park, cards are hidden in stations. Find these cards by paying close attention to sounds and lights. When you have found a card station, you can see how many cards are left. If there are any cards left, enter the shown code below to receive a card!</string>
+    <string name="card_finder_text">Throughout the entire park, cards are hidden in stations. Find these cards by paying close attention to sounds and lights. When you have found a card station, there will be a display showing how many cards are left, and a display that shows a code. Enter the code you see on the display below and you will gain your card!</string>
     <string name="card_number_text">Enter card code!</string>
     <string name="catalogue_button">Catalogue</string>
     <string name="cardfinder_button">Cardfinder</string>
@@ -28,4 +28,10 @@
     <string name="options2">Option 2</string>
     <string name="options3">Option 3</string>
     <string name="options4">Option 4</string>
+    <string name="no_id_toast">Please enter a table id!</string>
+    <string name="battle_request_sent_toast">Battle request sent successfully! Continue on the table!</string>
+    <string name="no_color_toast">Please select a color!</string>
+    <string name="battle_already_playing_toast">This table is already playing!</string>
+    <string name="battle_device_id_wrong_toast">Device id is wrong!</string>
+    <string name="battle_team_taken">Team is already taken!</string>
 </resources>
