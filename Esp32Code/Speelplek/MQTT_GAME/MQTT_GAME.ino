@@ -81,7 +81,7 @@ const int MAX_ROUND = 5;
 
 String gameStateText[] = {"Idle", "Choosing", "Result", "Finish"};
 enum GameState {
-    IDLE, CHOOSING, RESULT, FINISH
+    IDLE, CHOOSING, RESULT, FINISH, ABORT
 };
 
 enum CardType {
@@ -100,6 +100,8 @@ int redWins = 0;
 int blueWins = 0;
 
 int currentRound = 0;
+
+unsigned long elapsedTime = 0;
 
 Button redChoiceButton = Button(buttonPin1);
 Button redConfirmButton = Button(buttonPin2);
@@ -187,6 +189,10 @@ void handleIdleState() {
 }
 
 void handleChoosingState() {
+    unsigned long currentTime = millis();
+
+   if((unsigned long)currentTime - elapsedTime <= 30000){
+  
     redChoiceButton.read();
     redConfirmButton.read();
     blueChoiceButton.read();
@@ -237,6 +243,16 @@ void handleChoosingState() {
     if (confirmations == 2) {
         setState(RESULT);
     }
+   }else{
+    elapsedTime = currentTime;
+    setState(ABORT);
+   }
+}
+
+void handleAbortState(){
+     mqttClient.publish((String(MQTT_DEVICE_TOPIC) + String(MAC)).c_str(), "abort");
+     delay(2000);
+     setState(IDLE);
 }
 
 void handleResultState() {
@@ -349,9 +365,12 @@ void setup() {
 void loop() {
     switch (gameState) {
         case IDLE:
+            digitalWrite(redLED, HIGH);
+            digitalWrite(greenLED, HIGH);
             handleIdleState();
             break;
         case CHOOSING:
+            digitalWrite(redLED, LOW);
             handleChoosingState();
             break;
         case RESULT:
@@ -359,6 +378,8 @@ void loop() {
             break;
         case FINISH:
             handleFinishState();
+        case ABORT:
+            handleAbortState();
             break;
     }
 
