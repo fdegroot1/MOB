@@ -12,6 +12,7 @@ public class OptionsActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_options);
         Button testResetButton = findViewById(R.id.testReset);
         testResetButton.setOnClickListener(v -> {
