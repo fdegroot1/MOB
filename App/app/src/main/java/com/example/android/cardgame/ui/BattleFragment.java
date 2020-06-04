@@ -1,15 +1,21 @@
 package com.example.android.cardgame.ui;
 
+import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.android.cardgame.R;
 import com.example.android.cardgame.SavedCardSettings;
+
+import java.util.Objects;
 
 import mob.app.networking.MOBClient;
 import mob.sdk.networking.payloads.BattleRequest;
@@ -17,6 +23,8 @@ import mob.sdk.networking.payloads.BattleRequestInvalid;
 import mob.sdk.networking.payloads.BattleResult;
 
 public class BattleFragment extends Fragment implements MOBClient.BattleRequestInvalidListener, MOBClient.BattleResultListener {
+    private static final String TAG = "BattleFragment";
+
     private EditText mTableIdEditText;
     private BattleRequest.Color mTeamColor;
     // TODO set card that will be claimed
@@ -32,6 +40,12 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_battle, container, false);
+
+        ImageButton redButton = (ImageButton) view.findViewById(R.id.red_team);
+        ImageButton blueButton = (ImageButton) view.findViewById(R.id.blue_team);
+
+        redButton.setOnClickListener(e -> setColorRed());
+        blueButton.setOnClickListener(e -> setColorBlue());
 
         // @todo set mTableIdEditText
 

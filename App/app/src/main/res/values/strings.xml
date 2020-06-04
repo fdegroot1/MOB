@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Essteling</string>
-    <string name="card_finder_text">Throughout the entire park, cards are hidden in stations. Find these cards by paying close attention to sounds and lights. When you have found a card station, you can see how many cards are left. If there are any cards left, enter the shown code below to receive a card!</string>
+    <string name="card_finder_text">Throughout the entire park, cards are hidden in stations. Find these cards by paying close attention to sounds and lights. When you have found a card station, there will be a display showing how many cards are left, and a display that shows a code. Enter the code you see on the display below and you will gain your card!</string>
     <string name="card_number_text">Enter card code!</string>
     <string name="catalogue_button">Catalogue</string>
     <string name="cardfinder_button">Cardfinder</string>
