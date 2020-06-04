@@ -221,7 +221,7 @@ void handleChoosingState() {
         lcd.setCursor(0, 0);
         lcd.print("Red:" + String(cardStrings[redChoice]));
         lcd.setCursor(0, 1);
-        lcd.print("Blue:" + String(cardStrings[redChoice]));
+        lcd.print("Blue:" + String(cardStrings[blueChoice]));
     }
 
     if (confirmations == 2) {
