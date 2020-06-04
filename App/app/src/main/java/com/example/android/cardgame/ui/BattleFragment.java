@@ -132,21 +132,15 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
 
     @Override
     public void onBattleResult(BattleResult battleResult) {
-        // battle has finished
-
-        // @todo update UI
 
         if (battleResult.hasWon()) {
-            // @todo update UI
             showDialog(getResources().getString(R.string.battle_result_won) + " " + getResources().getString(R.string.won) + ": " + battleResult.getAmountWon()
             + ", " + getResources().getString(R.string.lost) + ": " + battleResult.getAmountLost());
         } else if (battleResult.hasLost()) {
             showDialog(getResources().getString(R.string.battle_result_lost) + " " + getResources().getString(R.string.won) + ": " + battleResult.getAmountWon()
                     + ", " + getResources().getString(R.string.lost) + ": " + battleResult.getAmountLost());
-            // @todo update UI
         } else {
             showDialog(R.string.draw);
-            // @todo update UI
         }
 
         MOBClient.INSTANCE.stop();

@@ -42,4 +42,9 @@
     <string name="your_card_collection">Jouw kaart collectie</string>
     <string name="new_card_received">Je hebt een nieuwe kaart</string>
     <string name="card_already_got">Je hebt deze kaart al</string>
+    <string name="battle_result_won">Je hebt gewonnen!</string>
+    <string name="battle_result_lost">Je hebt verloren!</string>
+    <string name="won">Gewonnen</string>
+    <string name="lost">Verloren</string>
+    <string name="draw">Het was gelijkspel!</string>
 </resources>
