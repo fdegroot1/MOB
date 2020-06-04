@@ -50,10 +50,13 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
         ImageButton blue = (ImageButton) view.findViewById(R.id.blue_team);
 
         red.setOnClickListener(e -> {
-            red.setImageDrawable(getResources().getDrawable(R.drawable.card_stroke,null));
+            red.setImageDrawable(getResources().getDrawable(R.drawable.red_placeholder_selected,null));
+            blue.setImageDrawable(getResources().getDrawable(R.drawable.blue_placeholder,null));
             setColorRed();
         });
         blue.setOnClickListener(e -> {
+            blue.setImageDrawable(getResources().getDrawable(R.drawable.blue_placeholder_selected,null));
+            red.setImageDrawable(getResources().getDrawable(R.drawable.red_placeholder,null));
             setColorBlue();
         });
         ((Button)view.findViewById(R.id.battle_start_button)).setOnClickListener(e -> sendBattleRequest());
