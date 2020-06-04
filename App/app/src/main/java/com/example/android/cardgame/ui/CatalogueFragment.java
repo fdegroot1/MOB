@@ -10,12 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.cardgame.CardCatalogueAdapter;
 import com.example.android.cardgame.R;
-import com.example.android.cardgame.SavedCardSettings;
 import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
-
-import mob.sdk.cards.CardRepository;
 
 public class CatalogueFragment extends Fragment {
     private static final String TAG = "CatalogueFragment";
@@ -32,8 +29,6 @@ public class CatalogueFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_catalogus, container, false);
-
-        SavedCardSettings.INSTANCE.saveCard(CardRepository.INSTANCE.getRandomId());
 
         this.mRecyclerView = view.findViewById(R.id.cardCatalogue);
         mRecyclerView.setAdapter(mAdapter);
