@@ -76,15 +76,15 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
         String cardId = cardResult.getCardId();
         String name = CardRepository.INSTANCE.getCard(cardId).getName();
 
-        getActivity().runOnUiThread( () -> {
+        getActivity().runOnUiThread(() -> {
             if (SavedCardSettings.INSTANCE.loadCards().contains(cardId)) {
                 showDialog(getResources().getString(R.string.card_already_got) + " " + name + "!");
             } else {
                 SavedCardSettings.INSTANCE.saveCard(cardId);
-                showDialog(getResources().getString(R.string.new_card_received ) + " " + name + "!");
-                mTestCardField.getText().clear();
-                hideKeyboardFrom(this.getContext(), mTestCardField);
+                showDialog(getResources().getString(R.string.new_card_received) + " " + name + "!");
             }
+            mTestCardField.getText().clear();
+            hideKeyboardFrom(this.getContext(), mTestCardField);
         });
 
         MOBClient.INSTANCE.stop();
