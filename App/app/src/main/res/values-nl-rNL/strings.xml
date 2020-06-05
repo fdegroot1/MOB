@@ -53,4 +53,7 @@
     <string name="lost">Verloren</string>
     <string name="draw">Het was gelijkspel!</string>
     <string name="wrong">is fout!</string>
+    <string name="SHIELD">Schild</string>
+    <string name="BOW">Boog</string>
+    <string name="SWORD">Zwaard</string>
 </resources>

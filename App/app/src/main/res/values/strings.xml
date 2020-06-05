@@ -54,5 +54,8 @@
     <string name="lost">Lost</string>
     <string name="draw">It was a draw!</string>
     <string name="wrong">is wrong!</string>
+    <string name="SHIELD">Shield</string>
+    <string name="BOW">Bow</string>
+    <string name="SWORD">Sword</string>
 
 </resources>

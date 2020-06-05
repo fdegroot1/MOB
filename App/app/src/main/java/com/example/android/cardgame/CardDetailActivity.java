@@ -58,10 +58,14 @@ public class CardDetailActivity extends AppCompatActivity {
             getSupportActionBar().setTitle(card.getName());
 
         TextView title = findViewById(R.id.cardTitleDetail);
+        TextView type = findViewById(R.id.cardType);
         TextView description = findViewById(R.id.cardDescription);
         ImageView image = findViewById(R.id.cardImage);
 
         title.setText(card.getName());
+        try {
+            type.setText(R.string.class.getField(card.getCardType().toString()).getInt(null));
+        } catch (Exception e) { }
         description.setText(R.string.lorem);
 
         try {
