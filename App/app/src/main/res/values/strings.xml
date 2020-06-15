@@ -57,5 +57,11 @@
     <string name="SHIELD">Shield</string>
     <string name="BOW">Bow</string>
     <string name="SWORD">Sword</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="tutorialWelcome">Welcome</string>
+    <string name="tutorialCollectCardTitle">How to collect cards</string>
+    <string name="tutorialBattleTitle">How to battle with others</string>
+    <string name="tutorialFinishButton">Finish tutorial</string>
+    <string name="tutorialNextButton">Next</string>
 
 </resources>

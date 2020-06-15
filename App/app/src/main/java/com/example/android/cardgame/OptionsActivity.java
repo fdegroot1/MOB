@@ -1,7 +1,7 @@
 package com.example.android.cardgame;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
@@ -16,12 +16,16 @@ public class OptionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_options);
         Button testResetButton = findViewById(R.id.testReset);
         testResetButton.setOnClickListener(v -> {
-            clearCards();
+            reset();
         });
     }
 
-    private void clearCards() {
+    private void reset() {
         //TODO add ui button to clear cards
         SavedCardSettings.INSTANCE.clear();
+
+        SharedPreferences.Editor editor = getSharedPreferences(MainActivity.TUTORIAL_SHARED_PREFERENCES, 0).edit();
+        editor.putBoolean(MainActivity.TUTORIAL_SHARED_PREFERENCES_TUTORIAL_FINISHED, false);
+        editor.apply();
     }
 }

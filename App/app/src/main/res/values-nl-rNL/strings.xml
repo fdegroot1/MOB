@@ -56,4 +56,9 @@
     <string name="SHIELD">Schild</string>
     <string name="BOW">Boog</string>
     <string name="SWORD">Zwaard</string>
+    <string name="tutorialWelcome">Welkom</string>
+    <string name="tutorialCollectCardTitle">Hoe verzamel je kaarten</string>
+    <string name="tutorialBattleTitle">Hoe speel je tegen anderen</string>
+    <string name="tutorialFinishButton">Tutorial voltooien</string>
+    <string name="tutorialNextButton">Volgende</string>
 </resources>
