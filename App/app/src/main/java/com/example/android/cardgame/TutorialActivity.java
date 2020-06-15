@@ -1,5 +1,7 @@
 package com.example.android.cardgame;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -7,9 +9,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
-import android.content.Intent;
-import android.os.Bundle;
 
 import com.example.android.cardgame.ui.TutorialSlideFragment;
 
@@ -21,9 +20,9 @@ import java.util.List;
 public class TutorialActivity extends AppCompatActivity implements TutorialSlideFragment.TutorialFinishListener, TutorialSlideFragment.TutorialNextListener {
     private static final int PAGES = 3;
     private final List<Fragment> fragmentList = new ArrayList<>(Arrays.asList(
-        TutorialSlideFragment.getFirst(this),
-        TutorialSlideFragment.getSecond(this),
-        TutorialSlideFragment.getThird(this)
+            TutorialSlideFragment.getFirst(this),
+            TutorialSlideFragment.getSecond(this),
+            TutorialSlideFragment.getThird(this)
     ));
 
     private ViewPager viewPager;
