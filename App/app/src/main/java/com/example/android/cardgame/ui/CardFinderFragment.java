@@ -96,8 +96,6 @@ public class CardFinderFragment extends Fragment implements MOBClient.CardReques
     }
 
     public void sendCardRequest() {
-        // TODO connect ui elements to this
-        // TODO get card code from ui and replace "test" with
 
         String cardCode = mTestCardField.getText().toString();
         if (cardCode.length() == 0) {

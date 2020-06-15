@@ -103,7 +103,6 @@ public enum MOBClient implements LoggingCallback {
 
                     while (transactionQueue.size() > 0) {
                         Transaction transaction = transactionQueue.peek();
-                        //TODO check if this is right
                         SocketClient.SuccessListener successListener = transactionSuccessListenerMap.get(transaction);
                         SocketClient.FailureListener failureListener = transactionFailureListenerMap.get(transaction);
 

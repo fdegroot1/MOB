@@ -101,7 +101,6 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
         MOBClient.INSTANCE.sendBattleRequest(battleRequest, () -> {
             // battle request send!
             showToast(R.string.battle_request_sent_toast,Toast.LENGTH_SHORT);
-            // @todo update UI
         });
     }
 
@@ -112,21 +111,18 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
                 // table is already playing
 //                showToast(R.string.battle_already_playing_toast,Toast.LENGTH_SHORT);
                 showDialog(R.string.battle_already_playing_toast);
-                // @todo update UI
                 break;
             case DEVICE_ID_WRONG:
                 // device id is wrong
 //                showToast(R.string.battle_device_id_wrong_toast,Toast.LENGTH_SHORT);
                 showDialog(R.string.battle_device_id_wrong_toast);
 
-                // @todo update UI
+
                 break;
             case TEAM_ALREADY_TAKEN:
                 // chosen team is already taken
 //                showToast("This team is already taken!",Toast.LENGTH_SHORT);
                 showDialog(R.string.battle_team_taken);
-
-                // @TODO: update ui
         }
     }
 
