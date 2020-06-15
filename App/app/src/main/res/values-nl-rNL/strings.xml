@@ -61,4 +61,5 @@
     <string name="tutorialBattleTitle">Hoe speel je tegen anderen</string>
     <string name="tutorialFinishButton">Tutorial voltooien</string>
     <string name="tutorialNextButton">Volgende</string>
+    <string name="all_cards">Je hebt alle kaarten al verzameld!</string>
 </resources>
