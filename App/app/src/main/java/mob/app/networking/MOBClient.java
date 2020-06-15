@@ -23,6 +23,7 @@ import mob.sdk.networking.payloads.BattleResult;
 import mob.sdk.networking.payloads.CardRequest;
 import mob.sdk.networking.payloads.CardRequestInvalid;
 import mob.sdk.networking.payloads.CardResult;
+import mob.sdk.networking.payloads.RandomCardResult;
 
 public enum MOBClient implements LoggingCallback {
     INSTANCE;

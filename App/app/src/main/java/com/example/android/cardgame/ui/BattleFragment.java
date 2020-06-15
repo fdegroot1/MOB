@@ -25,6 +25,7 @@ import mob.app.networking.MOBClient;
 import mob.sdk.networking.payloads.BattleRequest;
 import mob.sdk.networking.payloads.BattleRequestInvalid;
 import mob.sdk.networking.payloads.BattleResult;
+import mob.sdk.networking.payloads.RandomCardResult;
 
 public class BattleFragment extends Fragment implements MOBClient.BattleRequestInvalidListener, MOBClient.BattleResultListener {
     private static final String TAG = "BattleFragment";
@@ -190,4 +191,5 @@ public class BattleFragment extends Fragment implements MOBClient.BattleRequestI
             dialog.show();
         });
     }
+
 }
