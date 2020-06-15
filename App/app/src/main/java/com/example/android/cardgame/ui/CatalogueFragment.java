@@ -1,21 +1,21 @@
 package com.example.android.cardgame.ui;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.cardgame.CardCatalogueAdapter;
 import com.example.android.cardgame.R;
-import com.google.android.flexbox.FlexWrap;
-import com.google.android.flexbox.FlexboxLayoutManager;
-import com.google.android.flexbox.JustifyContent;
 
 public class CatalogueFragment extends Fragment {
     private static final String TAG = "CatalogueFragment";
+    private static final double MAX_CARD_WIDTH = 200.0;
 
     private CardCatalogueAdapter mAdapter;
     private RecyclerView mRecyclerView;
@@ -32,10 +32,11 @@ public class CatalogueFragment extends Fragment {
 
         this.mRecyclerView = view.findViewById(R.id.cardCatalogue);
         mRecyclerView.setAdapter(mAdapter);
-        FlexboxLayoutManager flexboxLayoutManager = new FlexboxLayoutManager(getActivity());
-        flexboxLayoutManager.setFlexWrap(FlexWrap.WRAP);
-        flexboxLayoutManager.setJustifyContent(JustifyContent.CENTER);
-        mRecyclerView.setLayoutManager(flexboxLayoutManager);
+
+        Configuration configuration = getResources().getConfiguration();
+        int columns = (int) Math.ceil(configuration.screenWidthDp / MAX_CARD_WIDTH);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), columns);
+        mRecyclerView.setLayoutManager(gridLayoutManager);
 
         return view;
     }
