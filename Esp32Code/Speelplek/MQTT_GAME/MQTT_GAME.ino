@@ -111,6 +111,7 @@ void setState(GameState state) {
     gameState = state;
     switch (state) {
         case IDLE:
+            currentRound = 0;
             lcd.clear();
             lcd.setCursor(0, 0);
             lcd.print("Beschikbaar");
