@@ -63,5 +63,6 @@
     <string name="tutorialBattleTitle">How to battle with others</string>
     <string name="tutorialFinishButton">Finish tutorial</string>
     <string name="tutorialNextButton">Next</string>
+    <string name="all_cards">You already have collected all the cards!</string>
 
 </resources>
