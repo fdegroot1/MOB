@@ -28,7 +28,7 @@ public enum SavedCardSettings {
         cards.add(cardId);
 
         editor.putString(CARD_IDS, cards.toString());
-        editor.commit();
+        editor.apply();
 
         Log.d(getClass().getSimpleName(), String.format("Card: %s saved on device", cardId));
     }
@@ -66,7 +66,7 @@ public enum SavedCardSettings {
 
         cards.clear();
         editor.clear();
-        editor.commit();
+        editor.apply();
     }
 
     public void setContext(Context context) {
