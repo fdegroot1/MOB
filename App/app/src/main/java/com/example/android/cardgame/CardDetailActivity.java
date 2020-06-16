@@ -65,14 +65,14 @@ public class CardDetailActivity extends AppCompatActivity {
         title.setText(card.getName());
         try {
             type.setText(R.string.class.getField(card.getCardType().toString()).getInt(null));
-        } catch (Exception e) { }
+        } catch (Exception ignored) { }
         description.setText(R.string.lorem);
 
         try {
             String imageId = cardId.replaceAll("-", "");
 
             image.setImageResource(R.drawable.class.getField(imageId).getInt(null));
-        } catch (Exception e) { }
+        } catch (Exception ignored) { }
     }
 
     private void displayFront() {
